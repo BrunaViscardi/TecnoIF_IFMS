@@ -18,7 +18,7 @@ class PainelController extends Controller
 
             return view('painel.layout.dashboard', compact('user'));
         }
-        return redirect()->route('painel.login');
+        return redirect()->route('auth.login');
     }
 
     public function showLoginform()
