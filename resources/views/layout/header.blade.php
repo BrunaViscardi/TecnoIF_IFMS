@@ -13,5 +13,5 @@
         <!-- Messages Dropdown Menu -->
 
 
-</ul><a href="{{route('painel.logout')}}">Sair<i class="fa fa-sign-out"  style="color: black" aria-hidden="true"></i></a>
+</ul><a href="{{route('logout')}}">Sair<i class="fa fa-sign-out"  style="color: black" aria-hidden="true"></i></a>
 </nav>

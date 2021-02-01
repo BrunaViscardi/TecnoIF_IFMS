@@ -1,5 +1,5 @@
 
-@extends('layout.index')
+@extends('layout.guest')
 
 @section('content')
     <div class="container">

@@ -1,4 +1,4 @@
-@extends('painel.layout.index')
+@extends('layout.index')
 @section('content')
     <section class="content">
         <div class="container-fluid">
