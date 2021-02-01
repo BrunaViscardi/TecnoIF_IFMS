@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PainelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+Route::middleware(['auth', 'verified'])->group(function () {
+   
+//Route::get('/painel/home', [PainelController::class,'dashboard'])->name('painel.home');
+Route::view('/painel/home', 'home')->name('home');
 });
