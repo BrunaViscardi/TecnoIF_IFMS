@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EquipeRequest;
+use App\Http\Requests\JustificarRequest;
 use App\Models\Edital;
 use App\Models\Gestor;
 use App\Models\Mentorado;

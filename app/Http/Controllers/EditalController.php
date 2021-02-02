@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MudarSituacaoRequest;
 use App\Models\Edital;
 use App\Models\Gestor;
 use App\Models\Projeto;

@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\GestorEditRequest;
+use App\Http\Requests\GestorRequest;
+use App\Models\Edital;
 use App\Models\Gestor;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class GestorController extends Controller
 {
