@@ -14,7 +14,7 @@ class CreateMentoradosTable extends Migration
     public function up()
     {
         Schema::create('mentorados', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('nome');
             $table->date('data_nascimento');
             $table->string('campus');

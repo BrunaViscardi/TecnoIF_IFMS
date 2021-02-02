@@ -15,7 +15,7 @@ class Edital extends Model
      * @var array
      */
     protected $fillable = [
-       'nome','link','data','situacao'
+        'nome','link','data','situacao'
 
     ];
     /**
@@ -48,4 +48,5 @@ class Edital extends Model
                 });
             });
     }
+
 }

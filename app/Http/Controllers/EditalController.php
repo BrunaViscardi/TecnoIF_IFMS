@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Edital;
+use App\Models\Gestor;
+use App\Models\Projeto;
+use App\Models\Situacao;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EditalController extends Controller
 {
@@ -12,6 +17,21 @@ class EditalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public $request = null;
+    private $repositoryGestores;
+    private $repositoryUsers;
+    private $repositoryEditais;
+    private $repositoryProjetos;
+    private $repositorySituacao;
+    public function __construct(Request $request, Gestor $gestor, User $user, Edital $edital, Projeto  $projeto, Situacao $situacao)
+    {
+        $this->request = $request;
+        $this->repositoryGestores = $gestor;
+        $this->repositoryUsers = $user;
+        $this->repositoryEditais = $edital;
+        $this->repositoryProjetos = $projeto;
+        $this->repositorySituacao = $situacao;
+    }
     public function index()
     {
         if (Auth::check() === true && Auth()->User()->isAdministrador()) {
@@ -26,12 +46,6 @@ class EditalController extends Controller
         Auth::logout();
         return redirect()->route('painel.login');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         if (Auth::check() === true && Auth()->User()->isCandidato()) {
@@ -47,14 +61,7 @@ class EditalController extends Controller
         Auth::logout();
         return redirect()->route('painel.login');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function Store(Request $request)
     {
         if (Auth::check() === true && Auth()->User()->isCandidato()) {
             abort(403);
@@ -79,78 +86,6 @@ class EditalController extends Controller
         Auth::logout();
         return redirect()->route('painel.login');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Edital  $edital
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Edital $edital)
-    {
-        
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Edital  $edital
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Edital $edital)
-    {
-        if (Auth::check() === true && Auth()->User()->isCandidato()) {
-            abort(403);
-        }
-        if (Auth::check() === true && Auth()->User()->isAdministrador()) {
-            abort(403);
-        }
-        if (Auth::check() === true) {
-            $user = Auth()->User();
-            $edital = $this->repositoryEditais->where('id', $id)->first();
-            return view('editais.updateView', compact('user', 'edital'));
-        }
-        Auth::logout();
-        return redirect()->route('painel.login');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Edital  $edital
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Edital $edital)
-    {
-        if (Auth::check() === true && Auth()->User()->isCandidato()) {
-            abort(403);
-        }
-        if (Auth::check() === true && Auth()->User()->isAdministrador()) {
-            abort(403);
-        }
-        if (Auth::check() === true) {
-            $user = Auth()->User();
-            $edital = $this->repositoryEditais->find($request->id);
-            if (!$edital)
-                return redirect()->back();
-            $edital->update($request->all());
-            return redirect()->route('editais.index');
-        }
-        Auth::logout();
-        return redirect()->route('painel.login');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Edital  $edital
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Edital $edital)
-    {
-        //
-    }
     public function updateSituacaoView($id)
     {
         if (Auth::check() === true && Auth()->User()->isCandidato()) {
@@ -165,6 +100,22 @@ class EditalController extends Controller
             if (!$edital)
                 return $edital()->back();
             return view('editais.updateSituacaoView', compact( 'edital', 'user'));
+        }
+        Auth::logout();
+        return redirect()->route('painel.login');
+    }
+    public function filtro(Request $request)
+    {
+        if (Auth::check() === true && Auth()->User()->isAdministrador()) {
+            abort(403);
+        }
+        if (Auth::check() === true) {
+            $user = Auth()->User();
+            $filtro = $request->filtro ?? '%';
+            $data = $request->data ?? '%';
+
+            $editais = Edital::buscar(['filtro'=>$filtro,'data'=>$data])->paginate(4);
+            return view('editais.index', compact('user', 'editais','data', 'filtro'));
         }
         Auth::logout();
         return redirect()->route('painel.login');
@@ -191,22 +142,39 @@ class EditalController extends Controller
             return redirect()->route('painel.login');}
     }
 
-    public function filtro(Request $request)
+    public function Edit($id)
     {
+        if (Auth::check() === true && Auth()->User()->isCandidato()) {
+            abort(403);
+        }
         if (Auth::check() === true && Auth()->User()->isAdministrador()) {
             abort(403);
         }
         if (Auth::check() === true) {
             $user = Auth()->User();
-            $filtro = $request->filtro ?? '%';
-            $data = $request->data ?? '%';
-
-            $editais = Edital::buscar(['filtro'=>$filtro,'data'=>$data])->paginate(4);
-            return view('editais.index', compact('user', 'editais','data', 'filtro'));
+            $edital = $this->repositoryEditais->where('id', $id)->first();
+            return view('editais.updateView', compact('user', 'edital'));
         }
         Auth::logout();
         return redirect()->route('painel.login');
     }
-
-
+    public function update(Request $request, $id)
+    {
+        if (Auth::check() === true && Auth()->User()->isCandidato()) {
+            abort(403);
+        }
+        if (Auth::check() === true && Auth()->User()->isAdministrador()) {
+            abort(403);
+        }
+        if (Auth::check() === true) {
+            $user = Auth()->User();
+            $edital = $this->repositoryEditais->find($request->id);
+            if (!$edital)
+                return redirect()->back();
+            $edital->update($request->all());
+            return redirect()->route('editais.index');
+        }
+        Auth::logout();
+        return redirect()->route('painel.login');
+    }
 }

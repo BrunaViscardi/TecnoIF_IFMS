@@ -14,7 +14,7 @@ class CreateSituacoesTable extends Migration
     public function up()
     {
         Schema::create('situacoes', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->String('situacao');
             $table->timestamps();
         });
