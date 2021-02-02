@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{route('home')}}" class="brand-link">
+    <a href="{{route('painel.home')}}" class="brand-link">
         <span class="font-weight-light" style="text-align: center"> <img width=100% src="{{asset('img/TecnoIF.png')}}"></span>
     </a>
 
@@ -32,7 +32,7 @@
                         <ul class="nav nav-treeview">
 
                                 <li class="nav-item">
-                                    <a href="{{route('home')}}" class="nav-link ">
+                                    <a href="{{route('painel.home')}}" class="nav-link ">
                                         <i class="fa fa-home nav-icon"></i>
                                         <p>Página inicial </p>
                                     </a>

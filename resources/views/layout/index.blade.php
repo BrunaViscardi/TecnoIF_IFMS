@@ -7,7 +7,7 @@
         <div class="wrapper">
             @includeIf('layout.header')
 
-             @includeIf('layout.sidebar_lateral')
+             
 
 
                 <div class="content-wrapper">

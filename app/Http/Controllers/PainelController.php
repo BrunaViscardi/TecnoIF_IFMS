@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class PainelController extends Controller
 {
     public $request;
@@ -16,7 +16,7 @@ class PainelController extends Controller
         if (Auth::check() === true) {
             $user = Auth()->User();
 
-            return view('painel.layout.dashboard', compact('user'));
+            return view('layout.dashboard', compact('user'));
         }
         return redirect()->route('auth.login');
     }

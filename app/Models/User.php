@@ -40,4 +40,23 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function isAdministrador(){
+        if ($this->role == 1){
+            return true;
+        }
+        return false;
+
+    }
+    public function isCandidato(){
+        if ($this->role == 0){
+            return true;
+        }
+        return false;
+    }
+    public function isCoordenador(){
+        if ($this->role == 2 ){
+            return true;
+        }
+        return false;
+    }
 }
