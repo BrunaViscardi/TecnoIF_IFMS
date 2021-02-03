@@ -81,3 +81,22 @@
         </div>
     </section>
 @endsection
+@section('script')
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            $('.modal-excluir-btn').on('click', function(event) {
+                event.preventDefault();
+                let href_da_rota = $(this).attr('data-rota');
+                let gestor_id = $(this).attr('data-gestor');
+                //define o href do modal para a rota passada
+                $('#href-excluir-gestor').attr('href',href_da_rota);
+                //mostra o modal
+                $('.modal-body p').text('Você realmente deseja excluir o gestor?'
+                    + ' Uma vez excluído não é possível recuperar os dados deletados.');
+                $('#modal-excluir').modal("show");
+            });
+        });
+
+    </script>
+@endsection
+
