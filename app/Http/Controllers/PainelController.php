@@ -14,9 +14,9 @@ class PainelController extends Controller
     public function dashboard()
     {
         if (Auth::check() === true) {
-            $user = Auth()->User();
+           // $user = Auth()->User();
 
-            return view('layout.dashboard', compact('user'));
+            return redirect()->route('projeto.index');
         }
         return redirect()->route('auth.login');
     }
@@ -44,6 +44,12 @@ class PainelController extends Controller
     {
         Auth::logout();
         return redirect()->route("painel.home");
+    }
+
+    public function cadastro()
+    {
+      
+        return view("home.cadastro");
     }
 
 
