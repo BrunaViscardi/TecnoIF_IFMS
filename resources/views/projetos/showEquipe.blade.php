@@ -1,4 +1,4 @@
-@extends('painel.layout.index')
+@extends('layout.index')
 @section('content')
 
     <section class="content">
@@ -15,7 +15,7 @@
                         <th>Telefone</th>
                         <th>
                             @if(Auth::user()->isCandidato() && $projeto->situacao_id == 1 ||  $projeto->situacao_id == 2)
-                                <a href="{{route('projetos.createEquipeView',$projeto->id)}}"><button class="btn btn-primary float-right" style="margin-right:2%">Cadastrar</button></a>
+                                <a href="{{route('projeto.createEquipeView',$projeto->id)}}"><button class="btn btn-primary float-right" style="margin-right:2%">Cadastrar</button></a>
                             @endif
                         </th>
                     </tr>
@@ -26,11 +26,11 @@
                             <td>{{$participante->telefone}}</td>
                             <td>
                                 @if($projeto->bolsista_id != $participante->id and $projeto->situacao_id == 1 ||  $projeto->situacao_id == 2)
-                                    <button class="btn btn-danger btn-sm modal-excluir-btn" data-rota="{{route('projetos.destroyParticipante', $participante->id)}}" data-participante="{{$participante->id}} ">Excluir</button>
+                                    <button class="btn btn-danger btn-sm modal-excluir-btn" data-rota="{{route('projeto.destroyParticipante', $participante->id)}}" data-participante="{{$participante->id}} ">Excluir</button>
                                 @endif
-                                    <a href="{{route('projetos.showParticipante',$participante->id)}}"> <button class="btn btn-primary btn-sm">Ver</button></a>
+                                    <a href="{{route('projeto.showParticipante', ['id' => $participante->id, 'id_projeto' => $projeto->id] )}}"> <button class="btn btn-primary btn-sm">Ver</button></a>
                                 @if(Auth::user()->isCandidato() && $projeto->situacao_id == 1 ||  $projeto->situacao_id == 2 )
-                                    <a href="{{route('projetos.updateParticipanteView',$participante->id)}}"> <button class="btn btn-warning btn-sm">Editar</button></a>
+                                    <a href="{{route('projeto.updateParticipanteView',$participante->id)}}"> <button class="btn btn-warning btn-sm">Editar</button></a>
                                 @endif
 
 

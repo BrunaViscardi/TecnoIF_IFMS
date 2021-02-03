@@ -42,7 +42,7 @@ class EditalController extends Controller
             $user = Auth()->User();
             $editais =  $this->repositoryEditais->orderBy('data')->paginate(4);
             $role = $user->role;
-            return view('editais/index', compact('role','user',  'editais'));
+            return view('editais.index', compact('role','user',  'editais'));
         }
         Auth::logout();
         return redirect()->route('painel.login');
@@ -72,9 +72,6 @@ class EditalController extends Controller
         }
         if (Auth::check() === true) {
             $user = Auth()->User();
-            $uri = $this->request->route()->uri();
-            $exploder = explode('/', $uri);
-            $urlAtual = $exploder[1];
             $editais = Edital::all();
             $e = new Edital();
             $e->nome = $request->nome;
@@ -82,7 +79,7 @@ class EditalController extends Controller
             $e->situacao ="Abertura";
             $e->link = $request->link;
             $e->save();
-            return redirect()->route('editais.index', compact('user',  'editais'));
+            return redirect()->route('edital.index', compact('user',  'editais'));
         }
         Auth::logout();
         return redirect()->route('painel.login');
@@ -99,7 +96,7 @@ class EditalController extends Controller
             $user = Auth()->User();
             $edital = $this->repositoryEditais->where('id', $id)->first();
             if (!$edital)
-                return $edital()->back();
+                return redirect()->back();
             return view('editais.updateSituacaoView', compact( 'edital', 'user'));
         }
         Auth::logout();
@@ -123,7 +120,6 @@ class EditalController extends Controller
     }
     public function updateSituacao ($id, MudarSituacaoRequest $request)
     {
-
         if (Auth::check() === true && Auth()->User()->isCandidato()) {
             abort(403);
         }
@@ -134,10 +130,10 @@ class EditalController extends Controller
             $user = Auth()->User();
             $edital = $this->repositoryEditais->where('id', $id)->first();
             if (!$edital)
-            {return $edital()->back();
+            {  return redirect()->back();
             } else{
                 $edital->update(['situacao' => $request->situacao]);
-                return redirect()->route('editais.index');
+                return redirect()->route('edital.index');
             }
         } else{ Auth::logout();
             return redirect()->route('painel.login');}
@@ -173,7 +169,7 @@ class EditalController extends Controller
             if (!$edital)
                 return redirect()->back();
             $edital->update($request->all());
-            return redirect()->route('editais.index');
+            return redirect()->route('edital.index');
         }
         Auth::logout();
         return redirect()->route('painel.login');

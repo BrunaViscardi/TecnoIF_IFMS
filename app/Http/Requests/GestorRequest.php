@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\FullName;
 use Illuminate\Foundation\Http\FormRequest;
 
 class GestorRequest extends FormRequest
@@ -13,7 +14,7 @@ class GestorRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**

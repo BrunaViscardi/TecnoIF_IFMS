@@ -48,7 +48,8 @@ class GestorController extends Controller
 
 
     public function store(GestorRequest $request)
-    {  if (Auth::check() === true && Auth()->User()->isCandidato()) {
+    {
+        if (Auth::check() === true && Auth()->User()->isCandidato()) {
         abort(403);
     }
         if (Auth::check() === true && Auth()->User()->isAdministrador()) {
@@ -79,7 +80,7 @@ class GestorController extends Controller
                 'email' => $users['email'],
                 'password' => Hash::make($users['password']),
             ]);
-            return redirect()->route('gestores.index', compact('user', 'gestores'));
+            return redirect()->route('gestor.index', compact('user', 'gestores'));
 
         }
         Auth::logout();
@@ -119,7 +120,7 @@ class GestorController extends Controller
             $user->delete();
 
 
-            return redirect()->route('gestores.index', compact('user'));
+            return redirect()->route('gestor.index', compact('user'));
         }
         Auth::logout();
 
@@ -175,7 +176,7 @@ class GestorController extends Controller
             if (!$gestor)
                 return redirect()->back();
             $gestor->update($request->all());
-            return redirect()->route('gestores.index');
+            return redirect()->route('gestor.index');
         }
         Auth::logout();
         return redirect()->route('painel.login');

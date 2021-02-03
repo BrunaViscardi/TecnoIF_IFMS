@@ -45,4 +45,6 @@ class PainelController extends Controller
         Auth::logout();
         return redirect()->route("painel.home");
     }
+
+
 }

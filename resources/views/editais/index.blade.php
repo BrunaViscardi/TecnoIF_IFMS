@@ -1,5 +1,5 @@
 
-@extends('painel.layout.index')
+@extends('layout.index')
 @section('content')
     <section class="content">
         <div class="row">
@@ -9,7 +9,7 @@
                         <div class="card-header">
                             <h3 class="card-title" style="margin-bottom: 8px">Editais</h3>
                             <div class=" card-tools row">
-                                <form action="{{route('editais.filtro')}}" method="GET">
+                                <form action="{{route('edital.filtro')}}" method="GET">
                                     <div class="input-group  input-group-sm col" >
                                         <input type="date" name="data" style="border-color: lightgrey;" value="{{ request()->data }}" class="form-control"
                                                placeholder="Filtrar">
@@ -32,7 +32,7 @@
                                 <th>Situação</th>
                                 @if(Auth::user() && Auth::user()->isCoordenador())
                                 <th>
-                                    <a href="{{route('editais.createView')}}"><button class="btn btn-primary float-right" style="margin-right:2%">Cadastrar</button></a>
+                                    <a href="{{route('edital.create')}}"><button class="btn btn-primary float-right" style="margin-right:2%">Cadastrar</button></a>
                                 </th>
                                 @endif
 
@@ -57,7 +57,7 @@
                                     @endif
                                     @if(Auth::user() && Auth::user()->isCoordenador())
                                         <td>
-                                            <form method="get" action="{{route('editais.updateView',$edital->id )}}">
+                                            <form method="get" action="{{route('edital.edit',$edital->id )}}">
                                                 <a href="{{$edital->link}}" target="_blank">
                                                     <button type="button" class="btn btn-primary btn-sm">Ver</button>
                                                 </a>
@@ -65,7 +65,7 @@
 
                                                 <button type="submit" class="btn btn-warning btn-sm">Editar</button>
 
-                                                <a href="{{route('editais.updateSituacaoView',$edital->id)}}"> <button type="button" class=" btn btn-danger btn-sm">Mudar situação</button></a>
+                                                <a href="{{route('edital.updateSituacaoView',$edital->id)}}"> <button type="button" class=" btn btn-danger btn-sm">Mudar situação</button></a>
 
                                             </form>
                                         </td>
@@ -76,7 +76,7 @@
                                                 <button type="button" class="btn btn-primary btn-sm">ver</button>
                                             </a>
                                             @if($edital->situacao == 'Inscrições Abertas')
-                                                <a href={{route('projetos.createView',['id'=>$edital->id])}}>
+                                                <a href={{route('projeto.create',['id'=>$edital->id])}}>
                                                     <button type="button" class="btn btn-success btn-sm">Inscrição</button>
                                                 </a>
                                             @endif

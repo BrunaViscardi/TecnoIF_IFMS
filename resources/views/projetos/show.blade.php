@@ -1,4 +1,4 @@
-@extends('painel.layout.index')
+@extends('layout.index')
 @section('content')
     <section class="content">
         <div class="card card-success">
@@ -98,7 +98,7 @@
 
                     </div>
                 @endif
-                <a href="{{route('projetos.showEquipe', $projeto->id )}}"> <button type="button" class="btn btn-success">Ver Equipe</button></a>
+                <a href="{{route('projeto.showEquipe', $projeto->id )}}"> <button type="button" class="btn btn-success">Ver Equipe</button></a>
 
             </div>
              </div>

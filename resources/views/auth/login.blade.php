@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="container vh-100">
-        <div class="row h-100 d-flex justify-content-center align align-items-center ">
+        <br>
+        <div class="row  d-flex justify-content-center align align-items-center ">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Login') }}</div>
@@ -58,17 +59,21 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row mb-0">
-                                <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Login') }}
-                                    </button>
+                            <div class="form-group  mb-0">
+                                <div class="col-md-6 offset-md-4">
+                                <button type="submit" class=" col btn btn-primary">
+                                    {{ __('Login') }}
+                                </button>
+                                </div>
+                                <div class="row  col-md-6 offset-md-4">
 
                                     @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        <a class=" btn btn-link" href="{{ route('password.request') }}">
                                             {{ __('Forgot Your Password?') }}
                                         </a>
+
                                     @endif
+
                                 </div>
                             </div>
                         </form>

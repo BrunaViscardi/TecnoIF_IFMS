@@ -1,5 +1,5 @@
 
-@extends('painel.layout.index')
+@extends('layout.index')
 
 @section('content')
     <section class="content">
@@ -93,7 +93,7 @@
                     <input disabled value="{{$projeto->telefone}}" name="telefone" class="form-control" placeholder="Telefone" required>
                     <small class="form-text text-muted">Insira o telefone do seu mentor</small>
                 </div>
-                <form method="post" action="{{route('projetos.updateRejeicao', $projeto->id )}}">
+                <form method="post" action="{{route('projeto.updateRejeicao', $projeto->id )}}">
                     @csrf
                     <div class="form-group">
                         <label>Justificar</label>
@@ -105,7 +105,7 @@
                         @enderror
                     </div>
                     <button type="submit" class="btn btn-success">Rejeitar</button>
-                    <a href="{{route('projetos.showEquipe', $projeto->id )}}"> <button type="button" class="btn btn-success">Ver Equipe</button></a>
+                    <a href="{{route('projeto.showEquipe', $projeto->id )}}"> <button type="button" class="btn btn-success">Ver Equipe</button></a>
                 </form> </div>
         </div>
     </section>

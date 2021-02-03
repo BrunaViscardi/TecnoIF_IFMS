@@ -1,4 +1,4 @@
-@extends('painel.layout.index')
+@extends('layout.index')
 @section('content')
     <section class="content">
         <div class="card card-success">
@@ -128,10 +128,25 @@
                     </div>
                     @enderror
                 </div>
+
+                @if($projeto->bolsista_id == $participante->id)
+
+                    <div class="form-group ">
+                        <label id="anexo" class="btn btn-light " for="fupload" style="text-align: center">Dados Bancários:
+                            <input id="fupload" name="anexo" type="file"  value="{{$participante->anexo }}"
+                                   class="form-control-file @error('anexo') is-invalid @enderror" accept=".png, .jpg, .jpeg, .pdf">
+                            @error('anexo')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror</label>
+                    </div>
+                @endif
+
             </div>
             @if(Auth()->User()->isCandidato())
             <div class="card-footer">
-                <a href="{{route('projetos.updateParticipanteView',$participante->id)}}"> <button class="btn btn-warning btn-sm">Editar</button></a>
+                <a href="{{route('projeto.updateParticipanteView',$participante->id)}}"> <button class="btn btn-warning btn-sm">Editar</button></a>
             </div>
             @endif
 

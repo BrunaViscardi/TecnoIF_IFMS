@@ -1,5 +1,5 @@
 
-@extends('painel.layout.index')
+@extends('layout.index')
 
 @section('content')
     <section class="content">
@@ -8,7 +8,7 @@
 
                 <h3 class="card-title">Edital</h3>
             </div>
-            <form action="{{route('editais.updateSituacao',$edital->id )}}" method="post">
+            <form action="{{route('edital.updateSituacao',$edital->id )}}" method="post">
 
                 @csrf
                 <div class="card-body">

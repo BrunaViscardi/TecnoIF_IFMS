@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ProjetosExport;
 use App\Http\Requests\EquipeRequest;
 use App\Http\Requests\JustificarRequest;
+use App\Http\Requests\ProjetoRequest;
 use App\Models\Edital;
 use App\Models\Gestor;
 use App\Models\Mentorado;
@@ -84,7 +86,7 @@ class ProjetoController extends Controller
             if (!$projeto)
                 return redirect()->back();
             $projeto->delete();
-            return redirect()->route('painel.coordenador.acompanharProjetos');
+            return redirect()->route('painel.acompanharProjetos');
         }
         Auth::logout();
         return redirect()->route('painel.login');
@@ -98,7 +100,7 @@ class ProjetoController extends Controller
         if (Auth::check() === true) {
             $projeto = $this->repositoryProjetos->where('id', $id)->first();
             if (!$projeto) {
-                return $projeto()->back();
+                return redirect()->back();
             }elseif ($projeto->situacao->situacao == "Inscrito")
             {
                 $projeto->update(['situacao_id' => 2]);
@@ -107,7 +109,7 @@ class ProjetoController extends Controller
             {
                 $projeto->update(['situacao_id' => 3]);
             }
-            return redirect()->route('projetos.index');
+            return redirect()->route('projeto.index');
         }
         Auth::logout();
         return redirect()->route('painel.login');
@@ -132,10 +134,10 @@ class ProjetoController extends Controller
         }
         $projeto = $this->repositoryProjetos->where('id', $id)->first();
         if (!$projeto)
-            return $projeto()->back();
+            return redirect()->back();
         $projeto->update(['situacao_id' => 4]);
         $projeto->update(['justificativa' => $request->justificar]);
-        return redirect()->route('projetos.index');
+        return redirect()->route('projeto.index');
     }
 
     public function filtro(Request $request)
@@ -152,6 +154,7 @@ class ProjetoController extends Controller
     }
     public function painel()
     {
+
         if (Auth::check() === true && Auth()->User()->isAdministrador()) {
             abort(403);
         }
@@ -173,12 +176,13 @@ class ProjetoController extends Controller
         Auth::logout();
         return redirect()->route('painel.login');
     }
-    public function showParticipante( $id)
+    public function showParticipante( Request $request)
     {
         if (Auth::check() === true){
             $user = Auth()->User();
-            $participante =$this->repositoryMentorado->where('id', $id)->first();
-            return view('projetos.showParticipante', compact('user',  'participante'));
+            $projeto = $this->repositoryProjetos->where('id',$request->id_projeto )->first();
+            $participante =$this->repositoryMentorado->where('id', $request->id)->first();
+            return view('projetos.showParticipante', compact('user',  'participante', 'projeto'));
         }
         Auth::logout();
         return redirect()->route('painel.login');
@@ -224,7 +228,7 @@ class ProjetoController extends Controller
             $projeto = Projeto::find($id);
             $mentorado->projetos()->attach($projeto);
             $mentorado->save();
-            return redirect()->route('projetos.showEquipe', compact('id'));
+            return redirect()->route('projeto.showEquipe', compact('id'));
         }
         Auth::logout();
         return redirect()->route('painel.login');
@@ -265,7 +269,7 @@ class ProjetoController extends Controller
                 $user->update(['name' => $request->nome]);
             }
             $participante->update($request->all());
-            return redirect()->route('projetos.showEquipe', $projeto->projeto_id);
+            return redirect()->route('projeto.showEquipe', $projeto->projeto_id);
         }
         Auth::logout();
         return redirect()->route('painel.login');
@@ -327,13 +331,14 @@ class ProjetoController extends Controller
             $projetos->areaMentor = $request->areaMentor;
             $projetos->email = $request->email;
             $projetos->telefone = $request->telefone;
+
             $projetos->bolsista_id = $user->mentorado_id;
             $projetos->justificativa = "";
             $projetos->save();
             $mentorado = $user->mentorado;
             $projetos->equipe()->attach($mentorado);
             $projetos->save();
-            return redirect()->route('projetos.index');
+            return redirect()->route('projeto.index');
         }
         Auth::logout();
         return redirect()->route('painel.login');
@@ -386,7 +391,7 @@ class ProjetoController extends Controller
             if (!$projetos)
                 return redirect()->back();
             $projetos->update($request->all());
-            return redirect()->route('projetos.index');
+            return redirect()->route('projeto.index');
         }
         Auth::logout();
         return redirect()->route('painel.login');

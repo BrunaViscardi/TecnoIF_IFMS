@@ -1,5 +1,5 @@
 
-@extends('painel.layout.index')
+@extends('layout.index')
 @section('content')
     <section class="content">
         <div class="card card-success">
@@ -7,7 +7,7 @@
 
                 <h3 class="card-title">Cadastro de Editais</h3>
             </div>
-            <form action="{{route('editais.create')}}" method="post">
+            <form action="{{route('edital.store')}}" method="post">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">

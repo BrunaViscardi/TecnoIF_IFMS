@@ -29,7 +29,15 @@ prejudicar a geração consolidação de empresas. Para realizar o proposto, ser
 - PHP XML
 - Composer >= 1.7.0
 - MariaDB >= 10.4.0 ou MySQL >= 5.6.0
-
+- PhpSpreadsheet: ^1.15
+- PHP extension php_zip enabled
+- PHP extension php_xml enabled
+- PHP extension php_gd2 enabled
+- PHP extension php_iconv enabled
+- PHP extension php_simplexml enabled
+- PHP extension php_xmlreader enabled
+- PHP extension php_zlib enabled
+- pt-br-validator: Validações brasileiras para Laravel
 
 ## 2. Instalação
 

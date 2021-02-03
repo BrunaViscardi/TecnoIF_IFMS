@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     public function run()
     {
 
-           /*$id = DB::table('mentorados')->insert([
+           $id = DB::table('mentorados')->insert([
                'nome' => 'Mentorado',
            'data_nascimento' => '2003-03-02' ,
             'telefone' => '(99)99999-9999',
@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
            'campus'=>'Jardim',
 
        ]
-       );*/
+       );
 
         User::create(
         [
@@ -35,7 +35,7 @@ class UserSeeder extends Seeder
             'email' => 'Mentorado@gmail.com',
             'password' => Hash::make('senha123'),
             'role'=> 0,
-            //'mentorado_id'=> $id
+           'mentorado_id'=> $id
         ]
 
         );

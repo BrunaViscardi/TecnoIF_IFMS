@@ -1,5 +1,5 @@
 
-@extends('painel.layout.index')
+@extends('layout.index')
 @section('content')
 
     <section class="content">
@@ -9,7 +9,7 @@
                     <div class="card-header">
                         <h3 class="card-title">Gestores</h3>
                         <div class=" card-tools">
-                            <form action="{{ route('gestores.filtro') }}" method="GET">
+                            <form action="{{ route('gestor.filtro') }}" method="GET">
                                 <div class="input-group input-group-sm " style="width: 150px;">
                                     <input type="text" name="filtro" value="{{ request()->filtro }}" class="form-control float-right"
                                            placeholder="Filtrar">
@@ -27,7 +27,7 @@
                                 <th>Nome</th>
                                 <th>Email</th>
                                 <th>
-                                    <a href="{{route('gestores.createView')}}"><button class="btn btn-primary float-right" style="margin-right:2%">Cadastrar</button></a>
+                                    <a href="{{route('gestor.create')}}"><button class="btn btn-primary float-right" style="margin-right:2%">Cadastrar</button></a>
                                 </th>
                             </tr>
                             </thead>
@@ -38,8 +38,8 @@
                                     <td>{{$gestorr->email}}</td>
                                     <td>
 
-                                        <button class="btn btn-danger btn-sm modal-excluir-btn" data-rota="{{route('gestores.destroy', $gestorr->email)}}" data-gestor="{{$gestorr->email}}">Excluir</button>
-                                        <a href="{{route('gestores.updateView',$gestorr->id)}}}}">
+                                        <button class="btn btn-danger btn-sm modal-excluir-btn" data-rota="{{route('gestor.destroy', $gestorr->email)}}" data-gestor="{{$gestorr->email}}">Excluir</button>
+                                        <a href="{{route('gestor.edit',$gestorr->id)}}">
                                             <button type="button" class="btn btn-warning btn-sm" >Editar</button>
                                         </a>
 

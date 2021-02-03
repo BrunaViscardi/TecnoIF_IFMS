@@ -1,5 +1,5 @@
 
-@extends('painel.layout.index')
+@extends('layout.index')
 @section('content')
     <section class="content">
         <div class="card card-success">
@@ -7,7 +7,7 @@
 
                 <h3 class="card-title">Edição Gestor</h3>
             </div>
-            <form action="{{route('gestores.update',  $gestor->id )}}" method="post">
+            <form action="{{route('gestor.update',  $gestor->id )}}" method="post">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">

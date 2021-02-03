@@ -1,5 +1,5 @@
 
-@extends('painel.layout.index')
+@extends('layout.index')
 @section('content')
     <section class="content">
         <div class="card card-success">
@@ -7,7 +7,7 @@
 
                 <h3 class="card-title">Editar Participante</h3>
             </div>
-            <form action="{{route('projetos.updateParticipante', $participante->id)}}" method="post">
+            <form action="{{route('projeto.updateParticipante', $participante->id)}}" method="post">
                 @method('PUT')
                 @csrf
                 <div class="card-body">
@@ -131,6 +131,18 @@
                         @enderror
                     </div>
                 </div>
+                @if($projeto->bolsista_id != $participante->id )
+                    <div class="form-group">
+                        <label>Dados Bancários</label>
+                        <input name="endereco" value="{{$participante->file}}" class="form-control @error('endereco') is-invalid @enderror" placeholder="Endereço">
+                        @error('endereco')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+
+                    @endif
 
                 <div class="card-footer">
                     <button type="submit" class="btn btn-success">Atualizar</button>

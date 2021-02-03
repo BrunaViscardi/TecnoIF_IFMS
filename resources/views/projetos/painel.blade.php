@@ -1,4 +1,4 @@
-@extends('painel.layout.index')
+@extends('layout.index')
 @section('content')
     <section class="content">
         <div class="container-fluid">
@@ -12,7 +12,7 @@
                         <div class="icon">
                             <i class="fas fa-archive"></i>
                         </div>
-                        <a href="{{route('editais.index')}}" class="small-box-footer"> <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{route('edital.index')}}" class="small-box-footer"> <i class="fas fa-arrow-circle-right"></i></a>
 
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                         <div class="icon">
                             <i class="fa fa-users"></i>
                         </div>
-                        <a href="{{route('projetos.index')}}" class="small-box-footer"> <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{route('projeto.index')}}" class="small-box-footer"> <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>

@@ -14,13 +14,13 @@
 
 
             </div>
-           
+
             <div class="info">
 
                 <a>{{$user->name }}</a>
             </div>
-          
-            
+
+
         </div>
 
         <!-- Sidebar Menu -->
@@ -39,7 +39,7 @@
                                 </li>
                             @if(Auth::user() && Auth::user()->isCandidato())
                                 <li class="nav-item">
-                                    <a href="{{route('projetos.painel')}}" class="nav-link ">
+                                    <a href="{{route('projeto.painel')}}" class="nav-link ">
                                         <i class="fas fa-archive nav-icon"></i>
                                         <p>Gerenciar projeto</p>
                                     </a> </li>
@@ -54,13 +54,13 @@
                                     </a>
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
-                                            <a href="{{route('configuracoes.updatePerfilView')}}" class="nav-link">
+                                            <a href="#" class="nav-link">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>Alterar dados do Perfil</p>
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{route('configuracoes.updateSenha')}}" class="nav-link">
+                                            <a href="#" class="nav-link">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>Alterar senha</p>
                                             </a>
@@ -72,7 +72,7 @@
                             @endif
                             @if(Auth::user() && Auth::user()->isAdministrador())
                                 <li class="nav-item">
-                                    <a href="{{route('projetos.index')}}" class="nav-link ">
+                                    <a href="{{route('projeto.index')}}" class="nav-link ">
                                         <i class="fa fa-users nav-icon"></i>
                                         <p>Acompanhar Projetos</p>
                                     </a>
@@ -88,7 +88,7 @@
                                     <ul class="nav nav-treeview">
 
                                         <li class="nav-item">
-                                            <a href="{{route('configuracoes.updateSenha')}}" class="nav-link">
+                                            <a href="#" class="nav-link">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>Alterar senha</p>
                                             </a>
@@ -99,15 +99,15 @@
                             @endif
                             @if(Auth::user() && Auth::user()->isCoordenador())
                                 <li class="nav-item">
-                                    <a href="{{route('gestores.index')}}" class="nav-link ">
+                                    <a href="{{route('gestor.index')}}" class="nav-link ">
                                         <i class="fa fa-users nav-icon"></i>
                                         <p>Cadastro de gestores</p>
                                     </a>
-                                    <a href="{{route('editais.index')}}" class="nav-link ">
+                                    <a href="{{route('edital.index')}}" class="nav-link ">
                                         <i class="fas fa-file-signature nav-icon"></i>
                                         <p>Cadastro de editais</p>
                                     </a>
-                                    <a href="{{route('projetos.index')}}" class="nav-link ">
+                                    <a href="{{route('projeto.index')}}" class="nav-link ">
                                         <i class="fas fa-archive nav-icon"></i>
                                         <p>Acompanhar Projetos</p>
                                     </a>
@@ -122,7 +122,7 @@
                                     </a>
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
-                                            <a href="{{route('configuracoes.updateSenha')}}" class="nav-link">
+                                            <a href="#" class="nav-link">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>Alterar senha</p>
                                             </a>
