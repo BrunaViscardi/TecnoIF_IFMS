@@ -66,17 +66,17 @@
     </section>
     <aside class="control-sidebar control-sidebar-dark">
     </aside>
-    <script src= {{asset("AdminLTE-3.0.5/plugins/jquery/jquery.min.js")}}></script>
-    <script src={{asset("AdminLTE-3.0.5/plugins/bootstrap/js/bootstrap.bundle.min.js")}} ></script>
-    <script src={{ asset("AdminLTE-3.0.5/plugins/jquery-ui/jquery-ui.min.js")}}></script>
-    <script src={{asset("AdminLTE-3.0.5/dist/js/adminlte.min.js")}}></script>
-    <script src={{asset("AdminLTE-3.0.5/dist/js/demo.js")}}></script>
-    <script src={{asset("AdminLTE-3.0.5/plugins/moment/moment.min.js")}}></script>
-    <script src={{asset("AdminLTE-3.0.5/plugins/fullcalendar/main.min.js")}}></script>
-    <script src={{asset("AdminLTE-3.0.5/plugins/fullcalendar-daygrid/main.min.js")}}></script>
-    <script src={{asset("AdminLTE-3.0.5/plugins/fullcalendar-timegrid/main.min.js")}}></script>
-    <script src={{asset("AdminLTE-3.0.5/plugins/fullcalendar-interaction/main.min.js")}}></script>
-    <script src={{asset("AdminLTE-3.0.5 /plugins/fullcalendar-bootstrap/main.min.js")}}></script>
+    <script src= {{asset("vendor/AdminLTE-3.0.5/plugins/jquery/jquery.min.js")}}></script>
+    <script src={{asset("vendor/AdminLTE-3.0.5/plugins/bootstrap/js/bootstrap.bundle.min.js")}} ></script>
+    <script src={{ asset("vendor/AdminLTE-3.0.5/plugins/jquery-ui/jquery-ui.min.js")}}></script>
+    <script src={{asset("vendor/AdminLTE-3.0.5/dist/js/adminlte.min.js")}}></script>
+    <script src={{asset("vendor/AdminLTE-3.0.5/dist/js/demo.js")}}></script>
+    <script src={{asset("vendor/AdminLTE-3.0.5/plugins/moment/moment.min.js")}}></script>
+    <script src={{asset("vendor/AdminLTE-3.0.5/plugins/fullcalendar/main.min.js")}}></script>
+    <script src={{asset("vendor/AdminLTE-3.0.5/plugins/fullcalendar-daygrid/main.min.js")}}></script>
+    <script src={{asset("vendor/AdminLTE-3.0.5/plugins/fullcalendar-timegrid/main.min.js")}}></script>
+    <script src={{asset("vendor/AdminLTE-3.0.5/plugins/fullcalendar-interaction/main.min.js")}}></script>
+    <script src={{asset("vendor/AdminLTE-3.0.5 /plugins/fullcalendar-bootstrap/main.min.js")}}></script>
     <script>
         $(function () {
             function ini_events(ele) {

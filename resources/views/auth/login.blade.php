@@ -74,6 +74,10 @@
 
                                     @endif
 
+                                    <a class=" btn btn-link" href="#">
+                                            Deseja criar uma conta?
+                                        </a>
+
                                 </div>
                             </div>
                         </form>
