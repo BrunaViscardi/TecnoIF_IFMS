@@ -15,7 +15,7 @@ use App\Models\Situacao;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Vtiful\Kernel\Excel;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProjetoController extends Controller
 {

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Exports;
-use App\Projeto;
+use App\Models\Projeto;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithHeadings;
