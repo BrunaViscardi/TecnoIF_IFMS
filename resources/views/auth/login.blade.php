@@ -74,8 +74,8 @@
 
                                     @endif
 
-                                    <a class=" btn btn-link" href="#">
-                                            Deseja criar uma conta?
+                                    <a class=" btn btn-link" href="{{route('create')}}">
+                                           Criar conta?
                                         </a>
 
                                 </div>

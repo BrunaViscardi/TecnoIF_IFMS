@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="{{asset('pages/css/cadastro.css')}}">
-    <link rel="stylesheet" href="{{asset('pages/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset ('pages/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/cadastro.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset ('assets/style.css')}}">
     <title>Cadastro de candidatos</title>
 </head>
 <body>
@@ -39,7 +39,7 @@
         </nav>
     </div>
 
-    <form action="{{route('home.store')}}" method="post">
+    <form action="{{route('store')}}" method="post">
         @csrf
         <div class="container">
             <div class="col-sm">
@@ -243,8 +243,5 @@
 </main>
 
 
-<script src="{{ asset ('pages/jquery.js') }}"></script>
-<script src="{{ url(mix('pages/js/cadastro.js')) }}"></script>
-<script src="{{asset('pages/bootstrap.js')}}"></script>
 </body>
 </html>

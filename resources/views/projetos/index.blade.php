@@ -80,9 +80,8 @@
                                             @if($projeto->edital->situacao =="Período de Avalição")
 
                                                 @if( $projeto->situacao->situacao =='Inscrito')
-                                                    <a href="{{route('projeto.u
-pdateAprovacao', $projeto->id)}}"><button type="button" class=" btn btn-success btn-sm">Aprovar</button></a>
-                                                    <a href="{{route('projeto.updateRejeicaoView', $projeto->id)}}"><button type="button" class="btn btn-danger btn-sm">Rejeitar</button></a>
+                                                    <a href="{{route('projeto.updateAprovacao', $projeto->id)}}"><button type="button" class=" btn btn-success btn-sm">Aprovar</button></a>
+                                                    <a href="{{route('projeto.editRejeicao', $projeto->id)}}"><button type="button" class="btn btn-danger btn-sm">Rejeitar</button></a>
                                                 @endif
                                             @endif
                                             @if( $projeto->situacao->situacao =='Em andamento')

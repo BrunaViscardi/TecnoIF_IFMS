@@ -54,13 +54,13 @@
                                     </a>
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
-                                            <a href="#" class="nav-link">
+                                            <a href="{{route('profile.editPerfil')}}" class="nav-link">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>Alterar dados do Perfil</p>
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="#" class="nav-link">
+                                            <a href="{{route('profile.editSenha')}}" class="nav-link">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>Alterar senha</p>
                                             </a>

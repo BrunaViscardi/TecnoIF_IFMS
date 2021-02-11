@@ -146,7 +146,7 @@
             </div>
             @if(Auth()->User()->isCandidato())
             <div class="card-footer">
-                <a href="{{route('projeto.updateParticipanteView',$participante->id)}}"> <button class="btn btn-warning btn-sm">Editar</button></a>
+                <a href="{{route('projeto.editParticipante',$participante->id)}}"> <button class="btn btn-warning btn-sm">Editar</button></a>
             </div>
             @endif
 

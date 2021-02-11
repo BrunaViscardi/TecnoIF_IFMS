@@ -1,6 +1,9 @@
 
 @extends('layout.index')
 @section('content')
+    <link rel="stylesheet" href="{{asset('pages/css/cadastro.css')}}">
+    <link rel="stylesheet" href="{{asset('pages/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset ('pages/style.css')}}">
     <section class="content">
         <div class="card card-success">
             <div class="card-header">
@@ -23,7 +26,7 @@
                     <div class="row">
                         <div class="form-group col">
                             <label>Data de nascimento</label>
-                            <input name="nascimento" value="{{$participante->nascimento}}" type="date" class="form-control @error('nascimento') is-invalid @enderror">
+                            <input name="nascimento" value="{{$participante->data_nascimento}}" type="date" class="form-control @error('nascimento') is-invalid @enderror">
                             @error('nascimento')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -130,20 +133,21 @@
                         </div>
                         @enderror
                     </div>
-                </div>
+
                 @if($projeto->bolsista_id != $participante->id )
-                    <div class="form-group">
-                        <label>Dados Bancários</label>
-                        <input name="endereco" value="{{$participante->file}}" class="form-control @error('endereco') is-invalid @enderror" placeholder="Endereço">
-                        @error('endereco')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
+                    <div class="form-group formR " id="formR">
+                        <label id="anexo" class="btn btn-light " for="fupload" style="text-align: center">Anexe um documento
+                            que comprove seus dados bancarios:
+                            <input id="fupload" name="anexo" type="file"  value="{{ old('anexo') }}"
+                                   class="form-control-file @error('anexo') is-invalid @enderror" accept=".png, .jpg, .jpeg, .pdf">
+                            @error('anexo')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror</label>
                     </div>
-
                     @endif
-
+        </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-success">Atualizar</button>
                 </div>

@@ -1,5 +1,7 @@
 <?php
 use App\Http\Controllers\GestorController;
+use App\Http\Controllers\MentoradoController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjetoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PainelController;
@@ -8,6 +10,8 @@ use App\Http\Controllers\EditalController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/create',  [MentoradoController::class, 'create'])->name('create');
+Route::post('/store',  [MentoradoController::class, 'store'])->name('store');
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -26,14 +30,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/projeto/showEquipe/{id}', [ProjetoController::class, 'showEquipe'])->name('projeto.showEquipe');
     Route::get('/projeto/show/{id}', [ProjetoController::class, 'show'])->name('projeto.show');
     Route::get('/projeto/updateAprovacao/{id}', [ProjetoController::class, 'updateAprovacao'])->name('projeto.updateAprovacao');
-    Route::get('/projeto/updateRejeicaoView/{id}', [ProjetoController::class, 'updateRejeicaoView'])->name('projeto.updateRejeicaoView');
+    Route::get('/projeto/editRejeicao/{id}', [ProjetoController::class, 'editRejeicao'])->name('projeto.editRejeicao');
     Route::post('/projeto/updateRejeicao/{id}', [ProjetoController::class, 'updateRejeicao'])->name('projeto.updateRejeicao');
     Route::get('/projeto/filtroSituacao', [ProjetoController::class, 'filtroSituacao'])->name('projeto.filtroSituacao');
     Route::get('/projeto/showParticipante/{id}/{id_projeto}', [ProjetoController::class, 'showParticipante'])->name('projeto.showParticipante');
-    Route::get('/projeto/createEquipeView/{id}', [ProjetoController::class, 'createEquipeView'])->name('projeto.createEquipeView');
+    Route::get('/projeto/StoreEquipe/{id}', [ProjetoController::class, 'StoreEquipe'])->name('projeto.StoreEquipe');
     Route::post('/projeto/createEquipe/{id}', [ProjetoController::class, 'createEquipe'])->name('projeto.createEquipe');
     Route::get('/projeto/showParticipante/{id}', [ProjetoController::class, 'showParticipante'])->name('projeto.showParticipante');
-    Route::get('/projeto/updateParticipanteView/{id}', [ProjetoController::class, 'updateParticipanteView'])->name('projeto.updateParticipanteView');
+    Route::get('/projeto/editParticipante/{id}', [ProjetoController::class, 'editParticipante'])->name('projeto.editParticipante');
     Route::put('/projeto/updateParticipante/{id}', [ProjetoController::class, 'updateParticipante'])->name('projeto.updateParticipante');
     Route::get('/projeto/destroyParticipante/{id}', [ProjetoController::class, 'destroyParticipante'])->name('projeto.destroyParticipante');
     Route::put('/projeto/edit/{id}', [ProjetoController::class, 'edit'])->name('projeto.edit');
@@ -43,7 +47,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         'destroy', 'show', 'edit', 'update'
     ]]);
     Route::get('/edital/filtro', [EditalController::class, 'filtro'])->name('edital.filtro');
-    Route::get('/edital/updateSituacaoView/{id}', [EditalController::class, 'updateSituacaoView'])->name('edital.updateSituacaoView');
+    Route::get('/edital/editSituacao/{id}', [EditalController::class, 'editSituacao'])->name('edital.editSituacao');
     Route::post('/edital/updateSituacao/{id}', [EditalController::class, 'updateSituacao'])->name('edital.updateSituacao');
     Route::get('/editais/update/{id}', [EditalController::class, 'update'])->name('edital.update');
     Route::get('/editais/edit/{id}', [EditalController::class, 'edit'])->name('edital.edit');
@@ -60,6 +64,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/gestores/store',  [GestorController::class, 'store'])->name('gestor.store');
     Route::get('/gestores/edit/{id}', [GestorController::class, 'edit'])->name('gestor.edit');
     Route::post('/gestores/update/{id}',  [GestorController::class, 'update'])->name('gestor.update');
+
+    Route::get('/profile/editSenha/',  [ProfileController::class, 'editSenha'])->name('profile.editSenha');
+    Route::get('/profile/editPerfil/',  [ProfileController::class, 'editPerfil'])->name('profile.editPerfil');
+    Route::get('/profile/updatePerfil/',  [ProfileController::class, 'updatePerfil'])->name('profile.updatePerfil');
+
+
 
 });
 

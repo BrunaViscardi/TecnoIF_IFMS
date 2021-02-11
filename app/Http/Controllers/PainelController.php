@@ -14,17 +14,12 @@ class PainelController extends Controller
     public function dashboard()
     {
         if (Auth::check() === true) {
-           // $user = Auth()->User();
 
             return redirect()->route('projeto.index');
         }
         return redirect()->route('auth.login');
     }
 
-    public function showLoginform()
-    {
-        return view('home.formLogin');
-    }
 
     public function login(Request $request)
     {
@@ -46,11 +41,6 @@ class PainelController extends Controller
         return redirect()->route("painel.home");
     }
 
-    public function cadastro()
-    {
-      
-        return view("home.cadastro");
-    }
 
 
 }

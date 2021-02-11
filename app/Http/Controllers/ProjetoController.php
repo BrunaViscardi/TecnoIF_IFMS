@@ -114,7 +114,7 @@ class ProjetoController extends Controller
         Auth::logout();
         return redirect()->route('painel.login');
     }
-    public function updateRejeicaoView($id)
+    public function editRejeicao($id)
     {
         if (Auth::check() === true && Auth()->User()->isCandidato()) {
             abort(403);
@@ -123,7 +123,7 @@ class ProjetoController extends Controller
             $user = Auth()->User();
             $projeto = $this->repositoryProjetos->where('id', $id)->first();
             $edital = $this->repositoryEditais->where('id', $projeto->edital_id)->first();;
-            return view('projetos.updateRejeicaoView', compact(  'projeto', 'edital', 'user'));
+            return view('projetos.editRejeicao', compact(  'projeto', 'edital', 'user'));
         }
         Auth::logout();
         return redirect()->route('painel.login');
@@ -187,7 +187,7 @@ class ProjetoController extends Controller
         Auth::logout();
         return redirect()->route('painel.login');
     }
-    public function createEquipeView($id)
+    public function createEquipe($id)
     {
         if (Auth::check() === true && Auth()->User()->isAdministrador()) {
             abort(403);
@@ -198,12 +198,12 @@ class ProjetoController extends Controller
         if (Auth::check() === true) {
             $user = Auth()->User();
             $projeto = $this->repositoryProjetos->where('id', $id)->first();
-            return view('projetos.createEquipeView', compact('user', 'id','projeto'));
+            return view('projetos.createEquipe', compact('user', 'id','projeto'));
         }
         Auth::logout();
         return redirect()->route('painel.login');
     }
-    public function createEquipe(equipeRequest $request, $id)
+    public function storeEquipe(equipeRequest $request, $id)
     {
         if (Auth::check() === true && Auth()->User()->isAdministrador()) {
             abort(403);
@@ -233,7 +233,7 @@ class ProjetoController extends Controller
         Auth::logout();
         return redirect()->route('painel.login');
     }
-    public function updateParticipanteView( $id)
+    public function editParticipante( $id)
     {
         if (Auth::check() === true && Auth()->User()->isAdministrador()) {
             abort(403);
@@ -243,8 +243,9 @@ class ProjetoController extends Controller
         }
         if (Auth::check() === true) {
             $user = Auth()->User();
+            $projeto = $this->repositoryProjetos;
             $participante =$this->repositoryMentorado->where('id', $id)->first();
-            return view('projetos.updateParticipanteView', compact('user',  'participante'));
+            return view('projetos.editParticipante', compact('user',  'participante', 'projeto'));
         }
         Auth::logout();
         return redirect()->route('painel.login');
@@ -353,7 +354,7 @@ class ProjetoController extends Controller
         }
         if (Auth::check() === true) {
             $user = Auth()->User();
-            return view('projetos.createView', compact('user',  'editalId'));
+            return view('projetos.create', compact('user',  'editalId'));
         }
         Auth::logout();
         return redirect()->route('painel.login');
@@ -371,7 +372,7 @@ class ProjetoController extends Controller
             $projetos = $this->repositoryProjetos->find($id);
             if (!$projetos)
                 return redirect()->back();
-            return view('projetos.updateCadastroView', compact('user',  'projetos'));
+            return view('projetos.edit', compact('user',  'projetos'));
         }
         Auth::logout();
         return redirect()->route('painel.login');

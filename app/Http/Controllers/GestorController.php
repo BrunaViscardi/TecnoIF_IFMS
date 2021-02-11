@@ -38,7 +38,7 @@ class GestorController extends Controller
         if (Auth::check() === true) {
             $user = Auth()->User();
             $gestor = Gestor::all();
-            return view('gestores.createView', compact('user',  'gestor'));
+            return view('gestores.create', compact('user',  'gestor'));
         }
         Auth::logout();
         return redirect()->route('painel.login');
@@ -158,7 +158,7 @@ class GestorController extends Controller
             $gestor = $this->repositoryGestores->find($id);
             if (!$gestor)
                 return redirect()->back();
-            return view('gestores.updateView', compact('user','gestor'));
+            return view('gestores.edit', compact('user','gestor'));
         }
         Auth::logout();
         return redirect()->route('painel.login');

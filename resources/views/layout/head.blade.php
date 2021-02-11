@@ -5,6 +5,9 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{asset('assets/css/cadastro.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset ('assets/style.css')}}">
     <link rel="stylesheet" href="{{asset('vendor/AdminLTE-3.0.5/plugins/fontawesome-free/css/all.min.css')}}">
     <!-- Ionicons -->
 

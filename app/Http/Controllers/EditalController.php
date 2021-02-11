@@ -84,7 +84,7 @@ class EditalController extends Controller
         Auth::logout();
         return redirect()->route('painel.login');
     }
-    public function updateSituacaoView($id)
+    public function editSituacao($id)
     {
         if (Auth::check() === true && Auth()->User()->isCandidato()) {
             abort(403);
@@ -97,7 +97,7 @@ class EditalController extends Controller
             $edital = $this->repositoryEditais->where('id', $id)->first();
             if (!$edital)
                 return redirect()->back();
-            return view('editais.updateSituacaoView', compact( 'edital', 'user'));
+            return view('editais.editSituacao', compact( 'edital', 'user'));
         }
         Auth::logout();
         return redirect()->route('painel.login');
@@ -150,7 +150,7 @@ class EditalController extends Controller
         if (Auth::check() === true) {
             $user = Auth()->User();
             $edital = $this->repositoryEditais->where('id', $id)->first();
-            return view('editais.updateView', compact('user', 'edital'));
+            return view('editais.edit', compact('user', 'edital'));
         }
         Auth::logout();
         return redirect()->route('painel.login');
