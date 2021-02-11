@@ -30,7 +30,7 @@
                                 @endif
                                     <a href="{{route('projeto.showParticipante', ['id' => $participante->id, 'id_projeto' => $projeto->id] )}}"> <button class="btn btn-primary btn-sm">Ver</button></a>
                                 @if(Auth::user()->isCandidato() && $projeto->situacao_id == 1 ||  $projeto->situacao_id == 2 )
-                                    <a href="{{route('projeto.editParticipante',$participante->id)}}"> <button class="btn btn-warning btn-sm">Editar</button></a>
+                                    <a href="{{route('projeto.editParticipante', ['id' => $participante->id, 'id_projeto' => $projeto->id])}}"> <button class="btn btn-warning btn-sm">Editar</button></a>
                                 @endif
 
 

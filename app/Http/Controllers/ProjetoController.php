@@ -233,7 +233,7 @@ class ProjetoController extends Controller
         Auth::logout();
         return redirect()->route('painel.login');
     }
-    public function editParticipante( $id)
+    public function editParticipante( $id, $id_projeto)
     {
         if (Auth::check() === true && Auth()->User()->isAdministrador()) {
             abort(403);
@@ -243,14 +243,14 @@ class ProjetoController extends Controller
         }
         if (Auth::check() === true) {
             $user = Auth()->User();
-            $projeto = $this->repositoryProjetos;
+            $projeto = $this->repositoryProjetos->where('id', $id_projeto)->first();
             $participante =$this->repositoryMentorado->where('id', $id)->first();
             return view('projetos.editParticipante', compact('user',  'participante', 'projeto'));
         }
         Auth::logout();
         return redirect()->route('painel.login');
     }
-    public function updateParticipante(Request $request, $id)
+    public function updateParticipante(Request $request, $id, $id_projeto)
     {
         if (Auth::check() === true && Auth()->User()->isAdministrador()) {
             abort(403);
@@ -261,7 +261,8 @@ class ProjetoController extends Controller
         if (Auth::check() === true) {
             $user = Auth()->User();
             $participante =$this->repositoryMentorado->where('id', $id)->first();
-            $projeto = $this->repositoryRelacionamento->where('mentorado_id', $id)->first();
+            $projeto = $this->repositoryProjetos->where('id', $id_projeto)->first();
+            $equipe = $projeto->equipe;
             if (!$participante){
                 return redirect()->back();
             }
@@ -270,8 +271,9 @@ class ProjetoController extends Controller
                 $user->update(['name' => $request->nome]);
             }
             $participante->update($request->all());
-            return redirect()->route('projeto.showEquipe', $projeto->projeto_id);
+            return view('projetos.showEquipe', compact('user', 'projeto', 'equipe'));
         }
+
         Auth::logout();
         return redirect()->route('painel.login');
     }
@@ -290,7 +292,7 @@ class ProjetoController extends Controller
             if (!$participante)
                 return redirect()->back();
             $participante->delete();
-            return redirect()->route('projetos.showEquipe', $projeto->projeto_id);
+            return redirect()->route('projeto.showEquipe', $projeto->projeto_id);
         }
         Auth::logout();
         return redirect()->route('painel.login');

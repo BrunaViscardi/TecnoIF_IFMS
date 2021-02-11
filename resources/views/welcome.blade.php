@@ -246,19 +246,19 @@
                         <ul>
                             <br>
                             <li>
-                                <a href="https://www.ifms.edu.br/centrais-de-conteudo/documentos-institucionais/regimentos/regimento-interno-da-tecnoif-incubadora-mista-e-social-de-empresas">
+                                <a  target="_blank" href="https://www.ifms.edu.br/centrais-de-conteudo/documentos-institucionais/regimentos/regimento-interno-da-tecnoif-incubadora-mista-e-social-de-empresas">
                                     Regimento Interno da TecnoIF;</a></li>
                             <li>
-                                <a href="https://www.ifms.edu.br/centrais-de-conteudo/documentos-institucionais/politicas/politica-de-inovacao-do-ifms.pdf">Política
+                                <a  target="_blank" href="https://www.ifms.edu.br/centrais-de-conteudo/documentos-institucionais/politicas/politica-de-inovacao-do-ifms.pdf">Política
                                     de Inovação do IFMS;</a></li>
                             <li>
-                                <a href="https://www.ifms.edu.br/centrais-de-conteudo/documentos-institucionais/programas/programa-empreendedorismo-inovador-pemin-ifms.pdf">Programa
+                                <a  target="_blank" href="https://www.ifms.edu.br/centrais-de-conteudo/documentos-institucionais/programas/programa-empreendedorismo-inovador-pemin-ifms.pdf">Programa
                                     de Empreendedorismo Inovador (Pemin);</a></li>
                             <li>
-                                <a href="https://www.ifms.edu.br/centrais-de-conteudo/documentos-institucionais/programas/programainstitucionalincentivoextensaopesquisainovacaoresolucao010de26062014.pdf">Programa
+                                <a  target="_blank" href="https://www.ifms.edu.br/centrais-de-conteudo/documentos-institucionais/programas/programainstitucionalincentivoextensaopesquisainovacaoresolucao010de26062014.pdf">Programa
                                     Institucional de Incentivo ao Ensino, Extensão, Pesquisa e Inovação (Piepi);</a></li>
                             <li >
-                                <a href="https://www.ifms.edu.br/centrais-de-conteudo/documentos-institucionais/regulamentos/regulamento-para-utilizacao-do-cartao-pesquisa-do-ifms.pdf">
+                                <a  target="_blank" href="https://www.ifms.edu.br/centrais-de-conteudo/documentos-institucionais/regulamentos/regulamento-para-utilizacao-do-cartao-pesquisa-do-ifms.pdf">
                                     Regulamento para Utilização do Cartão Pesquisa;</a></li>
                         </ul>
                     </div>

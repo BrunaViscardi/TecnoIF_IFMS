@@ -34,11 +34,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/projeto/updateRejeicao/{id}', [ProjetoController::class, 'updateRejeicao'])->name('projeto.updateRejeicao');
     Route::get('/projeto/filtroSituacao', [ProjetoController::class, 'filtroSituacao'])->name('projeto.filtroSituacao');
     Route::get('/projeto/showParticipante/{id}/{id_projeto}', [ProjetoController::class, 'showParticipante'])->name('projeto.showParticipante');
-    Route::get('/projeto/StoreEquipe/{id}', [ProjetoController::class, 'StoreEquipe'])->name('projeto.StoreEquipe');
-    Route::post('/projeto/createEquipe/{id}', [ProjetoController::class, 'createEquipe'])->name('projeto.createEquipe');
+    Route::post('/projeto/storeEquipe/{id}', [ProjetoController::class, 'storeEquipe'])->name('projeto.storeEquipe');
+    Route::get('/projeto/createEquipe/{id}', [ProjetoController::class, 'createEquipe'])->name('projeto.createEquipe');
     Route::get('/projeto/showParticipante/{id}', [ProjetoController::class, 'showParticipante'])->name('projeto.showParticipante');
-    Route::get('/projeto/editParticipante/{id}', [ProjetoController::class, 'editParticipante'])->name('projeto.editParticipante');
-    Route::put('/projeto/updateParticipante/{id}', [ProjetoController::class, 'updateParticipante'])->name('projeto.updateParticipante');
+    Route::get('/projeto/editParticipante/{id}/{id_projeto}', [ProjetoController::class, 'editParticipante'])->name('projeto.editParticipante');
+    Route::put('/projeto/updateParticipante/{id}/{id_projeto}', [ProjetoController::class, 'updateParticipante'])->name('projeto.updateParticipante');
     Route::get('/projeto/destroyParticipante/{id}', [ProjetoController::class, 'destroyParticipante'])->name('projeto.destroyParticipante');
     Route::put('/projeto/edit/{id}', [ProjetoController::class, 'edit'])->name('projeto.edit');
     Route::post('/projeto/update/{id}', [ProjetoController::class, 'update'])->name('projeto.update');
@@ -67,7 +67,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/profile/editSenha/',  [ProfileController::class, 'editSenha'])->name('profile.editSenha');
     Route::get('/profile/editPerfil/',  [ProfileController::class, 'editPerfil'])->name('profile.editPerfil');
-    Route::get('/profile/updatePerfil/',  [ProfileController::class, 'updatePerfil'])->name('profile.updatePerfil');
+    Route::post('/profile/updatePerfil/',  [ProfileController::class, 'updatePerfil'])->name('profile.updatePerfil');
 
 
 

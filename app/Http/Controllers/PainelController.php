@@ -13,8 +13,12 @@ class PainelController extends Controller
     }
     public function dashboard()
     {
+        if (Auth::check() === true && Auth()->User()->isCandidato()) {
+            if (Auth::check() === true) {
+                return redirect()->route('projeto.painel');
+            }
+        }
         if (Auth::check() === true) {
-
             return redirect()->route('projeto.index');
         }
         return redirect()->route('auth.login');

@@ -10,7 +10,7 @@
 
                 <h3 class="card-title">Editar Participante</h3>
             </div>
-            <form action="{{route('projeto.updateParticipante', $participante->id)}}" method="post">
+            <form action="{{route('projeto.updateParticipante', ['id'=>$participante->id, 'id_projeto'=> $projeto->id])}}" method="post">
                 @method('PUT')
                 @csrf
                 <div class="card-body">
@@ -34,7 +34,7 @@
                             @enderror
                         </div>
                         <div class="form-group col">
-                            <label>Telefone</label>
+                            <label>Celular</label>
                             <input name="telefone" value="{{$participante->telefone}}" type="text" class="form-control @error('telefone') is-invalid @enderror">
                             @error('telefone')
                             <div class="invalid-feedback">
@@ -63,7 +63,8 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="row">
+                    <div class="form-group col">
                         <label>Email</label>
                         <input name="email" value="{{$participante->email}}" type="text" class="form-control @error('email') is-invalid @enderror">
                         @error('email')
@@ -72,20 +73,20 @@
                         </div>
                         @enderror
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col">
                         <label>Campus</label>
                         <select name="campus" class="form-control @error('campus') is-invalid @enderror">
                             <option value="">Campus</option>
-                            <option value="Aquidauana">Aquidauana</option>
-                            <option value="Campo Grande">Campo Grande</option>
-                            <option value="Corumbá">Corumbá</option>
-                            <option value="Coxim">Coxim</option>
-                            <option value="Dourados">Dourados</option>
-                            <option value="Jardim">Jardim</option>
-                            <option value="Naviraí">Naviraí</option>
-                            <option value="Nova Andradina">Nova Andradina</option>
-                            <option value="Ponta Porã">Ponta Porã</option>
-                            <option value="Três Lagoas">Três Lagoas</option>
+                            <option value="Aquidauana" {{ $participante->campus == "Aquidauana" ? 'selected' : '' }}>Aquidauana</option>
+                            <option value="Campo Grande" {{ $participante->campus == "Campo Grande" ? 'selected' : '' }}>Campo Grande</option>
+                            <option value="Corumbá" {{ $participante->campus == "Corumbá" ? 'selected' : '' }}>Corumbá</option>
+                            <option value="Coxim" {{ $participante->campus == "Coxim" ? 'selected' : '' }}>Coxim</option>
+                            <option value="Dourados"{{ $participante->campus == "Dourados" ? 'selected' : '' }}>Dourados</option>
+                            <option value="Jardim"{{ $participante->campus == "Jardim" ? 'selected' : '' }}>Jardim</option>
+                            <option value="Naviraí"{{ $participante->campus == "Naviraí" ? 'selected' : '' }}>Naviraí</option>
+                            <option value="Nova Andradina"{{ $participante->campus == "Nova Andradina" ? 'selected' : '' }}>Nova Andradina</option>
+                            <option value="Ponta Porã"{{ $participante->campus == "Ponta Porã" ? 'selected' : '' }}>Ponta Porã</option>
+                            <option value="Três Lagoas"{{ $participante->campus == "Três Lagoas" ? 'selected' : '' }}>Três Lagoas</option>
                         </select>
                         @error('campus')
                         <div class="invalid-feedback">
@@ -93,6 +94,7 @@
                         </div>
                         @enderror
 
+                    </div>
                     </div>
                     <div class="row">
                         <div class="form-group col">
@@ -124,6 +126,49 @@
                         </div>
 
                     </div>
+                    @if($projeto->bolsista_id == $participante->id )
+                        <div class="form-group formR " id="formR">
+                            <label id="anexo" class="btn btn-light " for="fupload" style="text-align: center">Anexe um documento
+                                que comprove seus dados bancarios:
+                                <input id="fupload" name="anexo" type="file"  value="{{ old('anexo') }}"
+                                       class="form-control-file @error('anexo') is-invalid @enderror" accept=".png, .jpg, .jpeg, .pdf">
+                                @error('anexo')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror</label>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col">
+                                <label>Conta</label>
+                                <input name="conta" value="{{$participante->conta}}" type="text" class="form-control @error('conta') is-invalid @enderror">
+                                @error('conta')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                            <div class="form-group col">
+                                <label>Agência</label>
+                                <input name="agencia" value="{{$participante->agencia}}" type="text" class="form-control @error('agencia') is-invalid @enderror">
+                                @error('agencia')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                            <div class="form-group col">
+                                <label>Banco</label>
+                                <input name="banco" value="{{$participante->banco}}" type="text" class="form-control @error('banco') is-invalid @enderror">
+                                @error('banco')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                            @endif
+
                     <div class="form-group">
                         <label>Endereço</label>
                         <input name="endereco" value="{{$participante->endereco}}" class="form-control @error('endereco') is-invalid @enderror" placeholder="Endereço">
@@ -134,22 +179,31 @@
                         @enderror
                     </div>
 
-                @if($projeto->bolsista_id != $participante->id )
-                    <div class="form-group formR " id="formR">
-                        <label id="anexo" class="btn btn-light " for="fupload" style="text-align: center">Anexe um documento
-                            que comprove seus dados bancarios:
-                            <input id="fupload" name="anexo" type="file"  value="{{ old('anexo') }}"
-                                   class="form-control-file @error('anexo') is-invalid @enderror" accept=".png, .jpg, .jpeg, .pdf">
-                            @error('anexo')
-                            <div class="invalid-feedback">
-                                {{ $message }}
+                        <div class="row">
+                            <div class="form-group col">
+                                <label>Bairro</label>
+                                <input value="{{$participante->numero}}" name="bairro" type="text" class="form-control">
+
+
                             </div>
-                            @enderror</label>
-                    </div>
-                    @endif
-        </div>
-                <div class="card-footer">
+                            <div class="form-group col">
+                                <label>Número</label>
+                                <input name="numero" value="{{$participante->numero}}"type="number" class="form-control">
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Complemento</label>
+                            <input id="input" name="complemento" value="{{$participante->complemento}}" type="text" class="form-control">
+
+
+                        </div>
+                        </div>
+
+
+                <div class="card-footer" style="text-align: center">
                     <button type="submit" class="btn btn-success">Atualizar</button>
+                </div>
                 </div>
             </form>
         </div>

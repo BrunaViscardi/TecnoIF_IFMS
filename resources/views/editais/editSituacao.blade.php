@@ -28,10 +28,10 @@
                     <div class="form-group">
                         <select class="form-control @error('situacao') is-invalid @enderror" name="situacao">
                             <option value="">Situação</option>
-                            <option value="Abertura">Edital de Abertura</option>
-                            <option value="Inscrições Abertas">Inscrições Abertas</option>
-                            <option value="Período de Avalição"> Edital em Período de Avalição</option>
-                            <option value="Concluído">Edital Concluído</option>
+                            <option value="Abertura" {{ $edital->situacao == "Abertura" ? 'selected' : '' }}>Edital de Abertura</option>
+                            <option value="Inscrições Abertas" {{ $edital->situacao == "Inscrições Abertas" ? 'selected' : '' }}>Inscrições Abertas</option>
+                            <option value="Período de Avalição" {{ $edital->situacao == "Período de Avalição" ? 'selected' : '' }}> Edital em Período de Avalição</option>
+                            <option value="Concluído" {{ $edital->situacao == "Concluído" ? 'selected' : '' }}>Edital Concluído</option>
                         </select>
 
                         @error('situacao')

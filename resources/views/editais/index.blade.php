@@ -65,7 +65,7 @@
 
                                                 <button type="submit" class="btn btn-warning btn-sm">Editar</button>
 
-                                                <a href="{{route('edital.updateSituacaoView',$edital->id)}}"> <button type="button" class=" btn btn-danger btn-sm">Mudar situação</button></a>
+                                                <a href="{{route('edital.editSituacao',$edital->id)}}"> <button type="button" class=" btn btn-danger btn-sm">Mudar situação</button></a>
 
                                             </form>
                                         </td>

@@ -7,7 +7,8 @@
 
                 <h3 class="card-title">Cadastro de Equipe</h3>
             </div>
-            <form action="{{route('projeto.createEquipe', $projeto->id)}}" method="post">
+            <form action="{{route('projeto.storeEquipe', $projeto->id)}}" method="post">
+                @method('POST')
                 @csrf
                 <div class="card-body">
                     <div class="form-group">

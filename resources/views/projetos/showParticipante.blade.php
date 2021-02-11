@@ -119,21 +119,13 @@
                     </div>
 
                 </div>
-                <div class="form-group">
-                    <label>Endereço</label>
-                    <input disabled name="endereco" value="{{$participante->endereco}}" class="form-control @error('endereco') is-invalid @enderror" placeholder="Endereço">
-                    @error('endereco')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                    @enderror
-                </div>
+
 
                 @if($projeto->bolsista_id == $participante->id)
 
                     <div class="form-group ">
                         <label id="anexo" class="btn btn-light " for="fupload" style="text-align: center">Dados Bancários:
-                            <input id="fupload" name="anexo" type="file"  value="{{$participante->anexo }}"
+                            <input disabled id="fupload" name="anexo" type="file"  value="{{$participante->anexo }}"
                                    class="form-control-file @error('anexo') is-invalid @enderror" accept=".png, .jpg, .jpeg, .pdf">
                             @error('anexo')
                             <div class="invalid-feedback">
@@ -141,15 +133,74 @@
                             </div>
                             @enderror</label>
                     </div>
+
+                    <div class="row">
+                        <div class="form-group col">
+                            <label>Conta</label>
+                            <input disabled name="conta" value="{{$participante->conta}}" type="text" class="form-control @error('conta') is-invalid @enderror">
+                            @error('conta')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="form-group col">
+                            <label>Agência</label>
+                            <input disabled name="agencia" value="{{$participante->agencia}}" type="text" class="form-control @error('agencia') is-invalid @enderror">
+                            @error('agencia')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="form-group col">
+                            <label>Banco</label>
+                            <input disabled name="banco" value="{{$participante->banco}}" type="text" class="form-control @error('banco') is-invalid @enderror">
+                            @error('banco')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
                 @endif
 
+                    <div class="form-group">
+                        <label>Endereço</label>
+                        <input disabled name="endereco" value="{{$participante->endereco}}" class="form-control @error('endereco') is-invalid @enderror" placeholder="Endereço">
+                        @error('endereco')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                    <div class="row">
+                        <div class="form-group col">
+                            <label>Bairro</label>
+                            <input disabled value="{{$participante->numero}}" name="bairro" type="text" class="form-control">
+
+
+                        </div>
+                        <div class="form-group col">
+                            <label>Número</label>
+                            <input disabled name="numero" value="{{$participante->numero}}"type="number" class="form-control">
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Complemento</label>
+                        <input disabled id="input" name="complemento" value="{{$participante->complemento}}" type="text" class="form-control">
+
+
+                    </div>
+
             </div>
+
             @if(Auth()->User()->isCandidato())
             <div class="card-footer">
-                <a href="{{route('projeto.editParticipante',$participante->id)}}"> <button class="btn btn-warning btn-sm">Editar</button></a>
+                <a href="{{route('projeto.editParticipante', ['id' => $participante->id, 'id_projeto' => $projeto->id])}}"> <button class="btn btn-warning ">Editar</button></a>
             </div>
             @endif
-
+        </div>
         </div>
     </section>
 

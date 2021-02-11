@@ -31,19 +31,14 @@
                 <li class="nav-item has-treeview menu-open">
                         <ul class="nav nav-treeview">
 
+
+                            @if(Auth::user() && Auth::user()->isCandidato())
                                 <li class="nav-item">
-                                    <a href="{{route('painel.home')}}" class="nav-link ">
+                                    <a href="{{route('projeto.painel')}}" class="nav-link ">
                                         <i class="fa fa-home nav-icon"></i>
                                         <p>Página inicial </p>
                                     </a>
                                 </li>
-                            @if(Auth::user() && Auth::user()->isCandidato())
-                                <li class="nav-item">
-                                    <a href="{{route('projeto.painel')}}" class="nav-link ">
-                                        <i class="fas fa-archive nav-icon"></i>
-                                        <p>Gerenciar projeto</p>
-                                    </a> </li>
-
                                 <li class="nav-item has-treeview">
                                     <a href="#" class="nav-link">
                                         <i class="fas fa-user-cog nav-icon"></i>
@@ -88,7 +83,7 @@
                                     <ul class="nav nav-treeview">
 
                                         <li class="nav-item">
-                                            <a href="#" class="nav-link">
+                                            <a href="{{route('profile.editSenha')}}" class="nav-link">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>Alterar senha</p>
                                             </a>
@@ -122,7 +117,7 @@
                                     </a>
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
-                                            <a href="#" class="nav-link">
+                                            <a href="{{route('profile.editSenha')}}" class="nav-link">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>Alterar senha</p>
                                             </a>
