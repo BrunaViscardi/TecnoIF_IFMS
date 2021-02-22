@@ -12,7 +12,7 @@
 <main role="main">
     <div class="container-brant" id="cabecalho">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand " href="#">
+            <a class="navbar-brand " href="/">
                 <img id="LogoCabecalho" src="{{ asset('img/TecnoIF.png') }}" alt="logo TecnoIF"> </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSite">
                 <span class="navbar-toggler-icon"></span>
@@ -20,16 +20,20 @@
             <div class="collapse navbar-collapse" id="navbarSite">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="https://www.instagram.com/ifmscg/?igshid=1mn46ve39rvhy"> <img
-                                id="redeSocial" src="{{ asset('img/i.png') }}" alt="logo Instagram"></a>
+                        <a class="nav-link" target="_blank" href="https://www.instagram.com/ifmscg/?igshid=1mn46ve39rvhy"> <img
+                                id="redeSocial" src="{{ asset('img/i.png') }}"  alt="logo Instagram"></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://pt-br.facebook.com/tecnoif/">
-                            <img id="redeSocial" src="{{ asset('img/f.png') }}" alt="logo Instagram"></a>
+                        <a class="nav-link" target="_blank" href="https://pt-br.facebook.com/tecnoif/">
+                            <img id="redeSocial" src="{{ asset('img/f.png') }}" alt="logo Facebook"></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://www.youtube.com/channel/UC_DLD3-ADKtoa6j-EUTqTvg"> <img
-                                id="redeSocial" src="{{ asset('img/y.png') }}" alt="logo Instagram"></a>
+                        <a class="nav-link" target="_blank" href="https://www.youtube.com/channel/UC_DLD3-ADKtoa6j-EUTqTvg"> <img
+                                id="redeSocial" src="{{ asset('img/y.png') }}" alt="logo Youtube"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" target="_blank" href="https://www.linkedin.com/in/tecnoif-incubadora-de-empresas-ifms-474aba1ba/"> <img
+                                id="redeSocial" src="{{ asset('img/L.png') }}" alt="logo LinkedIn"></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/painel/home">Fazer login</a>
@@ -39,13 +43,13 @@
         </nav>
     </div>
 
-    <form action="{{route('store')}}" method="post">
+    <form action="{{route('store')}}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="container">
             <div class="col-sm">
                 <br>
                 <div class="form-group">
-                    <label>Nome
+                    <label>Nome*
                         <input type="text" class="form-control @error('nome') is-invalid @enderror" id="nome"
                                placeholder="Nome" name="nome"  value="{{ old('nome') }}">
 
@@ -58,7 +62,7 @@
                 </div>
                 <div class="formR">
                     <div class="form-group col">
-                        <label> Data de Nascimento
+                        <label> Data de Nascimento*
                             <input name="nascimento" type="date"
                                    class="form-control @error('nascimento') is-invalid @enderror" value="{{ old('nascimento') }}">
                             @error('nascimento')
@@ -69,7 +73,7 @@
                         </label>
                     </div>
                     <div class="form-group col">
-                        <label>Celular
+                        <label>Celular*
                             <input name="telefone" type="text"
                                    class="form-control @error('telefone') is-invalid @enderror" placeholder="(xx)xxxxx-xxxx" value="{{ old('telefone') }}">
                             @error('telefone')
@@ -82,7 +86,7 @@
                 </div>
                 <div class="formR">
                     <div class="form-group col">
-                        <label>CPF
+                        <label>CPF*
                             <input type="text" name="cpf" placeholder="xxx.xxx.xxx-xx" class="form-control @error('cpf') is-invalid @enderror" value="{{ old('cpf') }}">
                             @error('cpf')
                             <div class="invalid-feedback">
@@ -93,7 +97,7 @@
                         </label>
                     </div>
                     <div class="form-group col">
-                        <label>RG
+                        <label>RG*
                             <input name="rg" type="text" class="form-control @error('rg') is-invalid @enderror" value="{{ old('rg') }}">
                             @error('rg')
                             <div class="invalid-feedback">
@@ -105,7 +109,7 @@
                 </div>
                 <div class="formR">
                     <div class="form-group col">
-                        <label>Email
+                        <label>Email*
                             <input name="email" type="text" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}">
                             @error('email')
                             <div class="invalid-feedback">
@@ -115,7 +119,7 @@
                         </label>
                     </div>
                     <div class="form-group col">
-                        <label>Campus
+                        <label>Campus*
                             <select name="campus" class="form-control @error('campus') is-invalid @enderror" >
                                 <option value="">Campus</option>
                                 <option value="Aquidauana"{{ old('campus') == "Aquidauana" ? 'selected' : '' }}>Aquidauana</option>
@@ -162,7 +166,7 @@
                 </div>
                 <div class="form-group ">
                     <label id="anexo" class="btn btn-light " for="fupload" style="text-align: center">Anexe um documento
-                        que comprove seus dados bancarios:
+                        que comprove seus dados bancarios:*
                         <input id="fupload" name="anexo" type="file"  value="{{ old('anexo') }}"
                                class="form-control-file @error('anexo') is-invalid @enderror" accept=".png, .jpg, .jpeg, .pdf">
                         @error('anexo')
@@ -173,7 +177,7 @@
                 </div>
                 <div class="formR">
                     <div class="form-group col">
-                        <label>Conta
+                        <label>Conta*
                             <input name="conta" type="text" value="{{ old('conta') }}" class="form-control @error('conta') is-invalid @enderror">
                             @error('conta')
                             <div class="invalid-feedback">
@@ -183,7 +187,7 @@
                         </label>
                     </div>
                     <div class="form-group col">
-                        <label>Agência
+                        <label>Agência*
                             <input name="agencia" type="text" value="{{ old('agencia') }}"
                                    class="form-control @error('agencia') is-invalid @enderror">
                             @error('agencia')
@@ -194,7 +198,7 @@
                         </label>
                     </div>
                     <div class="form-group col">
-                        <label>Banco
+                        <label>Banco*
                             <input name="banco"  value="{{ old('banco') }}" type="text" class="form-control @error('banco') is-invalid @enderror">
                             @error('banco')
                             <div class="invalid-feedback">
@@ -205,7 +209,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Endereço
+                    <label>Endereço*
                         <input name="endereco"  value="{{ old('endereco') }}" type="text" class="form-control @error('endereco') is-invalid @enderror">
                         @error('endereco')
                         <div class="invalid-feedback">
@@ -233,13 +237,21 @@
 
                     </label>
                 </div>
-                <div class="card-footer">
+                <div class="card-footer" style="text-align: center">
                     <button type="submit" class="btn btn-success">Cadastrar</button>
                 </div>
 
             </div>
         </div>
     </form>
+
+    <footer class=" container footer mt-auto py-3">
+        <strong>Copyright &copy; {{date('Y')}} Incubadora de Empresas do IFMS.</strong>
+        Todos os direitos reservados.
+        <div class="float-right d-none d-sm-inline-block">
+            <b>Version</b> 1.0
+        </div>
+    </footer>
 </main>
 
 

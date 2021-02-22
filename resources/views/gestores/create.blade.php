@@ -11,7 +11,7 @@
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
-                        <label>Nome </label>
+                        <label>Nome* </label>
                         <input name="nome" value="{{ old('nome')}}" class="form-control   @error('nome') is-invalid @enderror" placeholder="Nome do gestor">
                         @error('nome')
                         <div class="invalid-feedback">
@@ -20,7 +20,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Email </label>
+                        <label>Email* </label>
                         <input name="email" value="{{ old('email')}}" class="form-control   @error('email') is-invalid @enderror" placeholder="Email" >
                         @error('email')
                         <div class="invalid-feedback">
@@ -29,7 +29,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Campus </label>
+                        <label>Campus* </label>
                         <select name="campus" class="form-control @error('campus') is-invalid @enderror" >
                             <option value="">Campus</option>
                             <option value="Aquidauana"{{ old('campus') == "Aquidauana" ? 'selected' : '' }}>Aquidauana</option>
@@ -50,7 +50,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>senha</label>
+                        <label>senha*</label>
                         <input name="senha" type="password" value="{{ old('senha')}}" class="form-control  @error('senha') is-invalid @enderror" placeholder="senha" >
                         @error('senha')
                         <div class="invalid-feedback">

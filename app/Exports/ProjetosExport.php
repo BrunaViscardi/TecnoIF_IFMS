@@ -10,6 +10,7 @@ class ProjetosExport implements FromQuery, WithHeadings
 {
     protected $request;
     private $filtro, $situacao;
+
     public function __construct($request)
     {
         $this->request = $request;
@@ -22,42 +23,61 @@ class ProjetosExport implements FromQuery, WithHeadings
 
     public function query()
     {
-        return Projeto::where('nome_projeto', 'LIKE', '%' . $this->filtro . '%')
-            ->orWhere('projetos.area', 'LIKE', '%' . $this->filtro . '%')
-            ->orWhere('projetos.campus', 'LIKE', '%' . $this->filtro . '%')
-            ->orWhere('projetos.email', 'LIKE', '%' . $this->filtro . '%')
-            ->orWhereHas('situacao', function($q)
-            {
-                $q->where('situacao', 'like', '%' . $this->filtro . '%');
-            })
-            ->orWhereHas('edital', function($q)
-            {
-                $q->where('nome', 'like', '%' . $this->filtro . '%');
-            })
-            ->orWhereHas('edital', function($q)
-            {
-                $q->where('situacao', 'like', '%' . $this->filtro . '%');
+        $filtro = $this->filtro;
+        $situacao = $this->situacao;
+        return Projeto::where(function ($query) use ($filtro) {
+            $query->where('nome_projeto', 'LIKE', '%' . $filtro . '%')
+                ->orWhere('projetos.area', 'LIKE', '%' . $filtro . '%')
+                ->orWhere('projetos.campus', 'LIKE', '%' . $filtro . '%')
+                ->orWhere('projetos.email', 'LIKE', '%' . $filtro . '%')
+                ->orWhereHas('edital', function($q) use ($filtro)
+                {
+                    $q->where('nome', 'like', '%' . $filtro . '%');
+                })
+                ->orWhereHas('situacao', function($q) use ($filtro)
+                {
+                    $q->where('situacao', 'like', '%' . $filtro . '%');
+                })
+            ;
+        })
+            ->where(function ($query) use ($situacao) {
+                $query->whereHas('edital', function($q) use ($situacao)
+                {
+                    $q->where('situacao', 'like', '%' . $situacao . '%');
+                });
             });
     }
 
     public function headings(): array
     {
         return [
-            'id',
+            'Id',
+            'Id bolsista',
+            'Id situacao',
+            'Id edital',
             'Projeto',
+            'Justificativa',
             'Campus',
             'Área',
-            'Mentor',
-            'Instuição do Mentor',
-            'Área de atuação do Mentor',
-            'E-mail do mentor',
-            'Telefone do mentor',
             'Problemas/necessidades do projeto',
             'Características e diferenciais da solução',
             'Público alvo',
             'Dificuldades e necessidades',
             'Disponibilidade e motivação',
             'Resultados esperados',
+            'Mentor',
+            'Instuição do Mentor',
+            'Área de atuação do Mentor',
+            'E-mail do mentor',
+            'Telefone do mentor',
+            'Criação do projeto',
+            'última atualização do projeto',
+
+
+
+
+
+
         ];
     }
 

@@ -12,7 +12,6 @@ return [
     | and used as needed; however, this mailer will be used by default.
     |
     */
-
     'default' => env('MAIL_MAILER', 'smtp'),
 
     /*
@@ -98,6 +97,16 @@ return [
     | of the emails. Or, you may simply stick with the Laravel defaults!
     |
     */
+    'smtp' => [
+        'transport' => 'smtp',
+        'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+        'port' => env('MAIL_PORT', 587),
+        'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+        'username' => env('MAIL_USERNAME'),
+        'password' => env('MAIL_PASSWORD'),
+        'timeout' => null,
+        'auth_mode' => null,
+    ],
 
     'markdown' => [
         'theme' => 'default',

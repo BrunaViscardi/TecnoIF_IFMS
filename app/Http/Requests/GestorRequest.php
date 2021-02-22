@@ -26,7 +26,7 @@ class GestorRequest extends FormRequest
     {
         return [
             'nome' => ['required', new FullName],
-            'email'=> 'required|email:rfc,dns|unique:users',
+            'email'=>'required|email:rfc,dns|unique:users',
             'senha'=> 'required|min:8',
             'campus'=> 'required'
 

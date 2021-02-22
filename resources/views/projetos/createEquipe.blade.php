@@ -12,7 +12,7 @@
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
-                        <label>Nome</label>
+                        <label>Nome*</label>
                         <input value="{{ old('nome') }}" name="nome" class="form-control @error('nome') is-invalid @enderror"  placeholder="Nome">
                         @error('nome')
                         <div class="invalid-feedback">
@@ -22,7 +22,7 @@
                     </div>
                     <div class="row">
                         <div class="form-group col">
-                            <label>Data de nascimento</label>
+                            <label>Data de nascimento*</label>
                             <input value="{{ old('nascimento') }}" name="nascimento" type="date" class="form-control @error('nascimento') is-invalid @enderror">
                             @error('nascimento')
                             <div class="invalid-feedback">
@@ -31,7 +31,7 @@
                             @enderror
                         </div>
                         <div class="form-group col">
-                            <label>Telefone</label>
+                            <label>Telefone*</label>
                             <input value="{{ old('telefone') }}" placeholder="(xx)xxxxx-xxxx" name="telefone" type="text" class="form-control  @error('telefone') is-invalid @enderror">
                             @error('telefone')
                             <div class="invalid-feedback">
@@ -42,7 +42,7 @@
                     </div>
                     <div class="row">
                         <div class="form-group col">
-                            <label>CPF</label>
+                            <label>CPF*</label>
                             <input value="{{ old('cpf') }}" placeholder="xxx.xxx.xxx-xx" name="cpf" type="text" class="form-control @error('cpf') is-invalid @enderror">
                             @error('cpf')
                             <div class="invalid-feedback">
@@ -51,7 +51,7 @@
                             @enderror
                         </div>
                         <div class="form-group col">
-                            <label>RG</label>
+                            <label>RG*</label>
                             <input   value="{{ old('rg') }}" name="rg" type="text" class="form-control @error('rg') is-invalid @enderror">
                             @error('rg')
                             <div class="invalid-feedback">
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Email</label>
+                        <label>Email*</label>
                         <input value="{{ old('email') }}" name="email" type="text" class="form-control @error('email') is-invalid @enderror">
                         @error('email')
                         <div class="invalid-feedback">
@@ -70,7 +70,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Campus</label>
+                        <label>Campus*</label>
                         <select name="campus" class="form-control @error('campus') is-invalid @enderror">
                             <option value="">Campus</option>
                             <option value="Aquidauana" {{ old('campus') == "Aquidauana" ? 'selected' : '' }}>Aquidauana</option>
@@ -122,7 +122,7 @@
 
                     </div>
                     <div class="form-group">
-                        <label>Endereço</label>
+                        <label>Endereço*</label>
                         <input value="{{ old('endereco') }}" name="endereco" class="form-control @error('endereco') is-invalid @enderror" placeholder="Endereço">
                         @error('endereco')
                         <div class="invalid-feedback">

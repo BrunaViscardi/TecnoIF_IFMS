@@ -33,7 +33,12 @@ class MentoradoController extends Controller
         $mentorado->turno = $request-> turno;
         $mentorado->telefone = $request-> telefone;
         $mentorado->cpf = $request-> cpf;
-        $mentorado->anexo = $request-> anexo;
+        if($request->file('anexo')->isvalid()== true){
+            $nameFile = $request-> nome . '.' . $request->file('anexo')->extension();
+            $mentorado->anexo = $request->file('anexo')->storeAs('products',  $nameFile);
+
+        }
+
         $mentorado->rg = $request-> rg;
         $mentorado->anexo = $request-> anexo;
         $mentorado->banco = $request-> banco;
@@ -44,6 +49,7 @@ class MentoradoController extends Controller
         $mentorado->numero = $request-> numero;
         $mentorado->complemento = $request-> complemento;
         $mentorado->save();
+
 
         $users = new User();
         $users->name = $request-> nome;

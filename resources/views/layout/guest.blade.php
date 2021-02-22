@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="{{asset ('assets/style.css')}}">
     <title>TecnoIF</title>
 </head>
+
 <body>
-<div role="main">
+<div role="main" >
     <div class="container-brant" id="cabecalho">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand " href="/"> <img id="LogoCabecalho" src="{{ asset('img/TecnoIF.png') }}"
-                                                    alt="logo TecnoIF"> </a>
+            <a class="navbar-brand " href="/"> <img id="LogoCabecalho" src="{{ asset('img/TecnoIF.png') }}" alt="logo TecnoIF"> </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSite">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -28,23 +28,28 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" target="_blank" href="https://www.youtube.com/channel/UC_DLD3-ADKtoa6j-EUTqTvg"> <img
-                                id="redeSocial" src="{{ asset('img/y.png') }}" alt="logo youtube"></a>
+                                id="redeSocial" src="{{ asset('img/y.png') }}" alt="logo Youtube"></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="https://linktr.ee/TecnoIF"> <img
-                                id="redeSocial" src="{{ asset('img/L.png') }}" alt="logo LinkedIn"></a>
+                        <a class="nav-link" target="_blank" href="https://www.linkedin.com/in/tecnoif-incubadora-de-empresas-ifms-474aba1ba/"> <img id="redeSocial" src="{{ asset('img/L.png') }}" alt="logo LinkedIn"></a>
                     </li>
-
                 </ul>
             </div>
-
         </nav>
     </div>
-
         @yield('content')
-
+    <br>
+    <br>
+    <footer class=" container footer " >
+        <strong>Copyright &copy; {{date('Y')}} Incubadora de Empresas do IFMS.</strong>
+        Todos os direitos reservados.
+        <div class="float-right d-none d-sm-inline-block">
+            <b>Version</b> 1.0
+        </div>
+    </footer>
 
 </div>
+
 
 <script src="{{ asset ('assets/jquery.js') }}"></script>
 <script src="{{asset('assets/js/script.js')}}"></script>

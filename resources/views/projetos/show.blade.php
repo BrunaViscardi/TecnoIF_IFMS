@@ -98,8 +98,9 @@
 
                     </div>
                 @endif
-                <a href="{{route('projeto.showEquipe', $projeto->id )}}"> <button type="button" class="btn btn-success">Ver Equipe</button></a>
-
+                <div class="card-footer" style="text-align: center">
+                <a href="{{route('projeto.showEquipe', $projeto->id )}}"> <button type="button" class="btn btn-success" style="text-align: center">Ver Equipe</button></a>
+                </div>
             </div>
              </div>
     </section>

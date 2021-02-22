@@ -1,6 +1,6 @@
 @extends('layout.guest')
 @section('content')
-    <div class="container">
+    <div class="container vh-100">
         <br>
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -10,7 +10,7 @@
                     <div class="card-body">
                         @if (session('resent'))
                             <div class="alert alert-success" role="alert">
-                                {{ __('A fresh verification link has been sent to your email address.') }}
+                                {{ __('A fresh verification link has been sent to your email address, verifique sua caixa de entrada e de span') }}
                             </div>
                         @endif
 
@@ -20,7 +20,6 @@
                             @csrf
                             <button type="submit"
                                     class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>
-                            .
                         </form>
                     </div>
                 </div>

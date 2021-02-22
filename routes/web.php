@@ -42,6 +42,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/projeto/destroyParticipante/{id}', [ProjetoController::class, 'destroyParticipante'])->name('projeto.destroyParticipante');
     Route::put('/projeto/edit/{id}', [ProjetoController::class, 'edit'])->name('projeto.edit');
     Route::post('/projeto/update/{id}', [ProjetoController::class, 'update'])->name('projeto.update');
+    Route::get('/projeto/editJustificativa/{id}', [ProjetoController::class, 'editJustificativa'])->name('projeto.editJustificativa');
 
     Route::resource('edital', EditalController::class, ['except' => [
         'destroy', 'show', 'edit', 'update'

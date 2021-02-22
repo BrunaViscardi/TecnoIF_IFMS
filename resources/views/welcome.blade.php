@@ -6,12 +6,13 @@
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <link rel="stylesheet" href="{{asset ('assets/style.css')}}">
     <title>TecnoIF</title>
+
 </head>
 <body>
 <main role="main">
     <div class="container-brant" id="cabecalho">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand " href="#"> <img id="LogoCabecalho" src="{{ asset('img/TecnoIF.png') }}"
+            <a class="navbar-brand " href="/"> <img id="LogoCabecalho" src="{{ asset('img/TecnoIF.png') }}"
                                                     alt="logo TecnoIF"> </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSite">
                 <span class="navbar-toggler-icon"></span>
@@ -28,10 +29,10 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" target="_blank" href="https://www.youtube.com/channel/UC_DLD3-ADKtoa6j-EUTqTvg"> <img
-                                id="redeSocial" src="{{ asset('img/y.png') }}" alt="logo youtube"></a>
+                                id="redeSocial" src="{{ asset('img/y.png') }}" alt="logo Youtube"></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="https://linktr.ee/TecnoIF"> <img
+                        <a class="nav-link" target="_blank" href="https://www.linkedin.com/in/tecnoif-incubadora-de-empresas-ifms-474aba1ba/"> <img
                                 id="redeSocial" src="{{ asset('img/L.png') }}" alt="logo LinkedIn"></a>
                     </li>
                     <li class="nav-item">
@@ -127,22 +128,20 @@
                     </p>
                 </div>
                 <div class="col-md-5">
-                    <img class="featurette-image img-fluid mx-auto" src="{{ asset('img/campidoifms.png') }}" alt="logo Instagram">
+                    <img class="featurette-image img-fluid mx-auto" src="{{ asset('img/marcaifms.png') }}" width="100%" height="100%" alt="Mapa">
                 </div>
             </div>
-
-            <hr class="featurette-divider">
-
-            <div class="row featurette">
-                <div class="col-md-7 order-md-2">
-                    <h2 class="featurette-heading" style="text-align: center">Atividades desenvolvidas</h2>
-                    <br>
-                    <ul>
-                        <li>capacitar os estudantes do IFMS durante a pré-incubação na identificação de
-                            oportunidades de mercado;
-                        </li>
-                        <li>orientar os pré-incubados no planejamento e início de desenvolvimento de seus projetos
-                            inovadores;
+                            <hr class="featurette-divider">
+                            <div class="row featurette">
+                                <div class="col-md-7 order-md-2">
+                                    <h2 class="featurette-heading" style="text-align: center">Atividades desenvolvidas</h2>
+                                    <br>
+                                    <ul>
+                                        <li>capacitar os estudantes do IFMS durante a pré-incubação na identificação de
+                                            oportunidades de mercado;
+                                        </li>
+                                        <li>orientar os pré-incubados no planejamento e início de desenvolvimento de seus projetos
+                                            inovadores;
                         </li>
                         <li>estimular as características e postura empreendedoras, nos pré-incubados da TecnoIF;
                         </li>
@@ -167,16 +166,14 @@
                     </ul>
                 </div>
                 <div class="col-md-5 order-md-1">
-                    <img class="featurette-image img-fluid mx-auto" src="{{ asset('img/im1.png') }}" alt="logo Instagram">
+                    <img class="featurette-image img-fluid mx-auto" src="{{ asset('img/campidoifms.png') }}" width="100%" height="100%" alt="logo IFMS">
                 </div>
             </div>
 
             <hr class="featurette-divider">
         </div>
 
-        <br>
-        <br>
-        <footer class="container">
+        <footer class="container footer mt-auto py-3">
             <strong>Copyright &copy; {{date('Y')}} Incubadora de Empresas do IFMS.</strong>
             Todos os direitos reservados.
             <div class="float-right d-none d-sm-inline-block">

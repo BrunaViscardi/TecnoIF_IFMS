@@ -80,12 +80,19 @@
                                             @if($projeto->edital->situacao =="Período de Avalição")
 
                                                 @if( $projeto->situacao->situacao =='Inscrito')
-                                                    <a href="{{route('projeto.updateAprovacao', $projeto->id)}}"><button type="button" class=" btn btn-success btn-sm">Aprovar</button></a>
+
+                                                    <button class="btn btn-success btn-sm modal-aprovar-btn" data-rota="{{route('projeto.updateAprovacao', $projeto->id)}}" data-projeto="{{ $projeto->id}}">Aprovar</button>
+
                                                     <a href="{{route('projeto.editRejeicao', $projeto->id)}}"><button type="button" class="btn btn-danger btn-sm">Rejeitar</button></a>
                                                 @endif
                                             @endif
                                             @if( $projeto->situacao->situacao =='Em andamento')
-                                                <a href="{{route('projeto.updateAprovacao', $projeto->id)}}"><button type="button" class=" btn btn-success btn-sm">Concluir mentoria</button></a>
+                                                <button class="btn btn-success btn-sm modal-concluir-btn" data-rota="{{route('projeto.updateAprovacao', $projeto->id)}}" data-projeto="{{ $projeto->id}}">Concluir mentoria</button>
+
+                                            @endif
+
+                                            @if( $projeto->situacao->situacao =='Rejeitado')
+                                                <a href="{{route('projeto.editJustificativa', $projeto->id)}}"><button type="button" class=" btn btn-warning btn-sm">Alterar Situação</button></a>
                                             @endif
                                         </td>
                                     @endif
@@ -101,5 +108,82 @@
                 </div>
             </div>
         </div>
+          <div class="modal fade" id="modal-aprovar" tabindex="-1" role="dialog">
+                      <div class="modal-dialog modal-lg" role="document">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h5 class="modal-title"> Deseja aprovar projeto?</h5>
+                                  <button type="button" class="close" data-dismiss="modal">
+                                      <span>&times;</span>
+                                  </button>
+                              </div>
+                              <div class="modal-body">
+
+                              </div>
+                              <div class="modal-footer">
+                                      <a id="href-aprovar-projeto" href="#">
+                                      <button type="button" class="btn btn-success">
+                                          Aprovar
+                                      </button>
+                                  </a>
+                                  <button type="button" class="btn btn-danger" data-dismiss="modal"> Cancelar</button>
+                              </div>
+                          </div>
+                      </div>
+          </div>
+        <div class="modal fade" id="modal-concluir" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"> Deseja concluir a mentoria do projeto?</h5>
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <a id="href-concluir-projeto" href="#">
+                            <button type="button" class="btn btn-success">
+                                Concluir
+                            </button>
+                        </a>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal"> Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </section>
+@endsection
+@section('script')
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            $('.modal-aprovar-btn').on('click', function(event) {
+                event.preventDefault();
+                let href_da_rota = $(this).attr('data-rota');
+                let projeto_id = $(this).attr('data-projeto');
+                //define o href do modal para a rota passada
+                $('#href-aprovar-projeto').attr('href',href_da_rota);
+                //mostra o modal
+                $('.modal-body p').text('Deseja aprovar projeto?');
+                $('#modal-aprovar').modal("show");
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            $('.modal-concluir-btn').on('click', function(event) {
+                event.preventDefault();
+                let href_da_rota = $(this).attr('data-rota');
+                let projeto_id = $(this).attr('data-projeto');
+                //define o href do modal para a rota passada
+                $('#href-concluir-projeto').attr('href',href_da_rota);
+                //mostra o modal
+                $('.modal-body p').text('Deseja concluir  a mentoria do projeto?');
+                $('#modal-concluir').modal("show");
+            });
+        });
+    </script>
 @endsection

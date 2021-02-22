@@ -97,7 +97,7 @@
                     @csrf
                     <div class="form-group">
                         <label>Justificar</label>
-                        <textarea name="justificar" class="form-control   @error('justificar') is-invalid @enderror" rows="3" placeholder="...">{{ old('justificar')}}</textarea>
+                        <textarea name="justificar" class="form-control   @error('justificar') is-invalid @enderror" rows="3" placeholder="...">{{$projeto->justificativa}}</textarea>
                         @error('justificar')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -105,8 +105,8 @@
                         @enderror
                     </div>
                     <div class="card-footer" style="text-align: center">
-                    <button type="submit" class="btn btn-success">Rejeitar</button>
-                    <a href="{{route('projeto.showEquipe', $projeto->id )}}"> <button type="button" class="btn btn-success">Ver Equipe</button></a>
+                        <button type="submit" class="btn btn-success">Atualizar Rejeição</button>
+                        <a href="{{route('projeto.showEquipe', $projeto->id )}}"> <button type="button" class="btn btn-success">Ver Equipe</button></a>
                     </div>
                 </form> </div>
         </div>

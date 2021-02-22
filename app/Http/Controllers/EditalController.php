@@ -40,7 +40,7 @@ class EditalController extends Controller
         }
         if (Auth::check() === true) {
             $user = Auth()->User();
-            $editais =  $this->repositoryEditais->orderBy('data')->paginate(4);
+            $editais =  $this->repositoryEditais->orderByDesc('data')->paginate(4);
             $role = $user->role;
             return view('editais.index', compact('role','user',  'editais'));
         }

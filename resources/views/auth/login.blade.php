@@ -1,13 +1,12 @@
 @extends('layout.guest')
 
 @section('content')
-    <div class="container vh-100">
+    <div class="container vh-100 ">
         <br>
         <div class="row  d-flex justify-content-center align align-items-center ">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Login') }}</div>
-
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
@@ -64,7 +63,7 @@
                                 <button type="submit" class=" col btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
-                                </div>
+                            </div>
                                 <div class="row  col-md-6 offset-md-4">
 
                                     @if (Route::has('password.request'))
@@ -76,9 +75,9 @@
 
                                     <a class=" btn btn-link" href="{{route('create')}}">
                                            Criar conta?
-                                        </a>
-
+                                    </a>
                                 </div>
+
                             </div>
                         </form>
                     </div>
@@ -86,4 +85,7 @@
             </div>
         </div>
     </div>
+
+
 @endsection
+

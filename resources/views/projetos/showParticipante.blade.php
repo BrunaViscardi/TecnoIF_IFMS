@@ -162,6 +162,7 @@
                             </div>
                             @enderror
                         </div>
+                    </div>
                 @endif
 
                     <div class="form-group">
@@ -196,7 +197,7 @@
             </div>
 
             @if(Auth()->User()->isCandidato())
-            <div class="card-footer">
+            <div class="card-footer" style="text-align: center">
                 <a href="{{route('projeto.editParticipante', ['id' => $participante->id, 'id_projeto' => $projeto->id])}}"> <button class="btn btn-warning ">Editar</button></a>
             </div>
             @endif

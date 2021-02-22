@@ -12,7 +12,7 @@
                 <div class="card-body">
                     @if (session('status') == "password-updated")
                         <div class="alert alert-success">
-                            Password updated successfully.
+                            Senha alterada com sucesso.
                         </div>
                     @endif
                     <div class="form-group">

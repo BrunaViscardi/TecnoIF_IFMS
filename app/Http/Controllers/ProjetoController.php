@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ProjetoMultiSheetExport;
 use App\Exports\ProjetosExport;
 use App\Http\Requests\EquipeRequest;
 use App\Http\Requests\JustificarRequest;
@@ -12,6 +13,7 @@ use App\Models\Mentorado;
 use App\Models\Mentorado_projeto;
 use App\Models\Projeto;
 use App\Models\Situacao;
+
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -138,6 +140,20 @@ class ProjetoController extends Controller
         $projeto->update(['situacao_id' => 4]);
         $projeto->update(['justificativa' => $request->justificar]);
         return redirect()->route('projeto.index');
+    }
+    public function editJustificativa($id)
+    {
+        if (Auth::check() === true && Auth()->User()->isCandidato()) {
+            abort(403);
+        }
+        if (Auth::check() === true) {
+            $user = Auth()->User();
+            $projeto = $this->repositoryProjetos->where('id', $id)->first();
+            $edital = $this->repositoryEditais->where('id', $projeto->edital_id)->first();;
+            return view('projetos.editJustificativa', compact(  'projeto', 'edital', 'user'));
+        }
+        Auth::logout();
+        return redirect()->route('painel.login');
     }
 
     public function filtro(Request $request)
@@ -302,7 +318,7 @@ class ProjetoController extends Controller
             abort(403);
         }
         if (Auth::check() === true) {
-            return Excel::download(new ProjetosExport($request), 'projetos.xlsx');
+            return Excel::download(new ProjetoMultiSheetExport($request), 'projetos.xlsx');
         }
         Auth::logout();
         return redirect()->route('painel.login');

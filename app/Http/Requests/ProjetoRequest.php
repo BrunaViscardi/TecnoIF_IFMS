@@ -25,7 +25,7 @@ class ProjetoRequest extends FormRequest
     {
         return [
             'telefone'=> 'required|celular_com_ddd',
-            'email'=> 'required|email:rfc,dns',
+            'email'=> 'required|email:rfc,dns|unique:users',
             'nome_projeto' =>'required',
             'campus' => 'required',
             'area' => 'required',

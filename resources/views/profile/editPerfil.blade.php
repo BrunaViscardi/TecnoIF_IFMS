@@ -8,7 +8,7 @@
 
                 <h3 class="card-title">Alterar dados do perfil</h3>
             </div>
-            <form action="{{route('profile.updatePerfil')}}" method="post">
+            <form action="{{route('profile.updatePerfil')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
 
