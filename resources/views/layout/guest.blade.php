@@ -31,7 +31,7 @@
                                 id="redeSocial" src="{{ asset('img/y.png') }}" alt="logo Youtube"></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="https://www.linkedin.com/in/tecnoif-incubadora-de-empresas-ifms-474aba1ba/"> <img id="redeSocial" src="{{ asset('img/L.png') }}" alt="logo LinkedIn"></a>
+                        <a class="nav-link" target="_blank" href="https://www.linkedin.com/in/tecnoif-incubadora-de-empresas-ifms-474aba1ba/"> <img id="redeSocial" src="{{ asset('img/l.png') }}" alt="logo LinkedIn"></a>
                     </li>
                 </ul>
             </div>
