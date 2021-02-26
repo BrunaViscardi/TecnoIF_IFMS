@@ -25,7 +25,7 @@
                             <td>{{$participante->email}}</td>
                             <td>{{$participante->telefone}}</td>
                             <td>
-                                @if($projeto->bolsista_id != $participante->id and $projeto->situacao_id == 1 ||  $projeto->situacao_id == 2)
+                                @if(Auth::user()->isCandidato() && $projeto->bolsista_id != $participante->id and $projeto->situacao_id == 1 ||  $projeto->situacao_id == 2)
                                     <button class="btn btn-danger btn-sm modal-excluir-btn" data-rota="{{route('projeto.destroyParticipante', $participante->id)}}" data-participante="{{$participante->id}} ">Excluir</button>
                                 @endif
                                     <a href="{{route('projeto.showParticipante', ['id' => $participante->id, 'id_projeto' => $projeto->id] )}}"> <button class="btn btn-primary btn-sm">Ver</button></a>
