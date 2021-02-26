@@ -29,7 +29,7 @@ class EquipeRequest extends FormRequest
             'cpf'=> 'required|formato_cpf',
             'telefone'=> 'required|celular_com_ddd',
             'rg'=> 'required',
-            'email'=> 'required|email:rfc,dns|unique:users',
+            'email'=> 'required|email:rfc',
             'campus'=> 'required',
             'endereco'=> 'required',
             'nascimento'=> 'required',

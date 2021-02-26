@@ -69,7 +69,7 @@
                                             @if($projeto->situacao->situacao == "Inscrito"  || $projeto->situacao->situacao == "Em andamento" )
                                                 <button type="submit" class="btn btn-warning btn-sm">Editar</button>
                                             @endif
-                                        </form>
+                                        </form>.
                                     </td>
                                     @endif
                                     @if(Auth::user() && Auth::user()->isCoordenador() || Auth::user()->isAdministrador())

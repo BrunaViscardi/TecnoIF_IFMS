@@ -125,13 +125,18 @@
 
                     <div class="form-group ">
                         <label id="anexo" class="btn btn-light " for="fupload" style="text-align: center">Dados Bancários:
-                            <input disabled id="fupload" name="anexo" type="file"  value="{{$participante->anexo }}"
+                            <input disabled id="fupload" name="anexo" type="text"  value="{{$participante->anexo }}"
                                    class="form-control-file @error('anexo') is-invalid @enderror" accept=".png, .jpg, .jpeg, .pdf">
                             @error('anexo')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
-                            @enderror</label>
+                            @enderror
+                            <br>
+                            <a href="{{route('mentorado.anexo.download',$participante->id )}}">
+                                <button class="btn btn-primary btn-sm">Download</button>
+                            </a>
+                        </label>
                     </div>
 
                     <div class="row">

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Exports\ProjetoMultiSheetExport;
-use App\Exports\ProjetosExport;
 use App\Http\Requests\EquipeRequest;
 use App\Http\Requests\JustificarRequest;
 use App\Http\Requests\ProjetoRequest;
@@ -261,7 +260,17 @@ class ProjetoController extends Controller
             $user = Auth()->User();
             $projeto = $this->repositoryProjetos->where('id', $id_projeto)->first();
             $participante =$this->repositoryMentorado->where('id', $id)->first();
-            return view('projetos.editParticipante', compact('user',  'participante', 'projeto'));
+
+
+            $mentorado = $participante;
+            if( $projeto->bolsista_id == $id)
+            {
+                return view('profile.editPerfil', compact('user',  'mentorado'));
+            } else{
+
+                return view('projetos.editParticipante', compact('user',  'participante', 'projeto'));
+            }
+
         }
         Auth::logout();
         return redirect()->route('painel.login');
@@ -277,16 +286,19 @@ class ProjetoController extends Controller
         if (Auth::check() === true) {
             $user = Auth()->User();
             $participante =$this->repositoryMentorado->where('id', $id)->first();
+            $participante2 =$this->repositoryMentorado->where('id', $id)->first();
             $projeto = $this->repositoryProjetos->where('id', $id_projeto)->first();
             $equipe = $projeto->equipe;
             if (!$participante){
                 return redirect()->back();
             }
-            if ($participante->id == $user->mentorado_id )
+            $participante->update($request->all());
+                      if ($participante->id == $user->mentorado_id )
             {
                 $user->update(['name' => $request->nome]);
+
             }
-            $participante->update($request->all());
+
             return view('projetos.showEquipe', compact('user', 'projeto', 'equipe'));
         }
 

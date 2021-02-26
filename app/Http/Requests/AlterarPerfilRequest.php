@@ -29,7 +29,7 @@ class AlterarPerfilRequest extends FormRequest
             'cpf'=> 'required|formato_cpf',
             'telefone'=> 'required|celular_com_ddd',
             'rg'=> 'required',
-            'email'=> 'required|email:rfc,dns',
+            'email'=> 'required|email:rfc',
             'campus'=> 'required',
             'conta'=> 'required',
             'agencia'=> 'required',

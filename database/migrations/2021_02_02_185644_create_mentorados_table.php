@@ -22,14 +22,14 @@ class CreateMentoradosTable extends Migration
             $table->String('periodo')->nullable();
             $table->String('turno')->nullable();
             $table->string('telefone');
-            $table->string('cpf')->unique();
+            $table->string('cpf');
             $table->string('rg');
-            $table->binary('anexo')->nullable();
+            $table->string('anexo')->nullable();
             $table->string('banco')->nullable();
             $table->string('agencia')->nullable();
             $table->string('conta')->nullable();
             $table->string('endereco');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('bairro')->nullable();
             $table->integer('numero')->nullable();
             $table->string('complemento')->nullable();

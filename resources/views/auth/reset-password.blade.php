@@ -1,6 +1,7 @@
 
 @extends('layout.guest')
 @section('content')
+    <br>
     <div class="container vh-100">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -63,4 +64,4 @@
         </div>
     </div>
 @endsection
-```
+

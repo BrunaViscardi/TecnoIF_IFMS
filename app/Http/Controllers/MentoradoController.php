@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class MentoradoController extends Controller
 {
@@ -34,13 +35,11 @@ class MentoradoController extends Controller
         $mentorado->telefone = $request-> telefone;
         $mentorado->cpf = $request-> cpf;
         if($request->file('anexo')->isvalid()== true){
-            $nameFile = $request-> nome . '.' . $request->file('anexo')->extension();
-            $mentorado->anexo = $request->file('anexo')->storeAs('products',  $nameFile);
-
+            $mentorado->anexo = $request->file('anexo')->store('projetos');
         }
-
         $mentorado->rg = $request-> rg;
-        $mentorado->anexo = $request-> anexo;
+      //  $mentorado->anexo = $request-> anexo;
+
         $mentorado->banco = $request-> banco;
         $mentorado->agencia = $request-> agencia;
         $mentorado->conta = $request-> conta;
@@ -68,6 +67,11 @@ class MentoradoController extends Controller
         return redirect()->route('painel.home');
 
     }
+    public function download($id){
+        $mentorado = $this->repositoryMentorados->where('id', $id)->first();
+        return Storage::download($mentorado->anexo);
+    }
+
 
 
 }

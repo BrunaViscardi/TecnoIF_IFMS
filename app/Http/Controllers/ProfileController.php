@@ -65,9 +65,16 @@ class ProfileController extends Controller
         if (Auth::check() === true) {
             $user = Auth()->User();
             $candidatos =$this->repositoryMentorado->where('email', $user->email)->first();
+            $candidatos2 =$this->repositoryMentorado->where('email', $user->email)->first();
             if (!$candidatos)
                 return redirect()->back();
+
             $candidatos->update($request->all());
+            if($request->anexo != null){
+                $aux = $request->file('anexo')->store('projetos');
+                $candidatos2->update(['anexo'=> $aux]);
+            }
+
             $user->update(['name'=> $request->nome]);
             return redirect()->route('painel.home');
         }

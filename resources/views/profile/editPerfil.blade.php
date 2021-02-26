@@ -125,15 +125,17 @@
 
                     </div>
                     <div class="form-group ">
-                        <label id="anexo" class="btn btn-light " for="fupload" style="text-align: center">Anexe um documento
-                            que comprove seus dados bancarios:
-                            <input id="fupload" name="anexo" type="file"  value="{{ old('anexo') }}"
-                                   class="form-control-file @error('anexo') is-invalid @enderror" accept=".png, .jpg, .jpeg, .pdf">
-                            @error('anexo')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror</label>
+
+                        <label id="anexo" class="btn btn-light " for="fupload" style="text-align: center">Dados Bancários:
+                           <div id="aux">
+
+                           </div>
+                            <input type="button" onclick="inserir()" class="btn btn-warning btn-sm" value="Editar">
+                            <a href="{{route('mentorado.anexo.download',$mentorado->id )}}">
+                                <button type="button" class="btn btn-primary btn-sm">Download</button>
+                            </a>
+
+                        </label>
                     </div>
                     <div class="row">
                         <div class="form-group col">
@@ -202,6 +204,20 @@
             </form>
         </div>
     </section>
+
 @endsection
+
+@section('script')
+    <script type="text/javascript">
+     function inserir(){
+         document.getElementById('aux').innerHTML=
+             '<input  id="fupload" name="anexo" type="file"  value="true" class="form-control-file " accept=".png, .jpg, .jpeg, .pdf">'
+
+
+     }
+
+    </script>
+@endsection
+
 
 

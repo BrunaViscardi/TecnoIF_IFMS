@@ -43,6 +43,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::put('/projeto/edit/{id}', [ProjetoController::class, 'edit'])->name('projeto.edit');
     Route::post('/projeto/update/{id}', [ProjetoController::class, 'update'])->name('projeto.update');
     Route::get('/projeto/editJustificativa/{id}', [ProjetoController::class, 'editJustificativa'])->name('projeto.editJustificativa');
+    Route::get('/mentorado/{id}/anexo/download/', [MentoradoController::class, 'download'])->name('mentorado.anexo.download');
 
     Route::resource('edital', EditalController::class, ['except' => [
         'destroy', 'show', 'edit', 'update'

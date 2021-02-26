@@ -27,10 +27,10 @@ class StoreUserRequest extends FormRequest
 
         return [
             'nome' => ['required', new FullName],
-            'cpf'=> 'required|formato_cpf',
+            'cpf'=> 'required|formato_cpf|unique:mentorados',
             'telefone'=> 'required|celular_com_ddd',
             'rg'=> 'required',
-            'email'=> 'required|email:rfc,dns|unique:users',
+            'email'=> 'required|email:rfc|unique:mentorados',
             'campus'=> 'required',
             'conta'=> 'required',
             'agencia'=> 'required',

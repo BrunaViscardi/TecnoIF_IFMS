@@ -16,7 +16,7 @@ class CreateGestoresTable extends Migration
         Schema::create('gestores', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('senha');
             $table->string('campus');
             $table->timestamps();

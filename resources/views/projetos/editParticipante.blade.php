@@ -127,17 +127,7 @@
 
                     </div>
                     @if($projeto->bolsista_id == $participante->id )
-                        <div class="form-group formR " id="formR">
-                            <label id="anexo" class="btn btn-light " for="fupload" style="text-align: center">Anexe um documento
-                                que comprove seus dados bancarios:
-                                <input id="fupload" name="anexo" type="file"  value="{{ old('anexo') }}"
-                                       class="form-control-file @error('anexo') is-invalid @enderror" accept=".png, .jpg, .jpeg, .pdf">
-                                @error('anexo')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror</label>
-                        </div>
+
 
                         <div class="row">
                             <div class="form-group col">
