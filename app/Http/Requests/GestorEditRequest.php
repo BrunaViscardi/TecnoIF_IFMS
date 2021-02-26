@@ -26,7 +26,7 @@ class GestorEditRequest extends FormRequest
     {
         return [
             'nome' => ['required', new FullName],
-            'email'=> 'required|email:rfc|unique:users',
+            'email'=> 'required|email:rfc',
             'senha'=> 'required|min:8',
             'campus'=> 'required'
 
