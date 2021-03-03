@@ -1,4 +1,4 @@
-@extends('layout.guest')
+@extends('layout.guestLogin')
 
 @section('content')
     <div class="container vh-100 ">
