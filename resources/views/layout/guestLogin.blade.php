@@ -9,6 +9,7 @@
 </head>
 
 <body>
+<main>
 <div role="main" >
     <div class="container-brant" id="cabecalho">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -50,7 +51,7 @@
     </footer>
 
 </div>
-
+</main>
 
 <script src="{{ asset ('assets/jquery.js') }}"></script>
 <script src="{{asset('assets/js/script.js')}}"></script>
