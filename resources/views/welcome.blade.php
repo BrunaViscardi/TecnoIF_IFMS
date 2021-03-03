@@ -36,7 +36,7 @@
                                 id="redeSocial" src="{{ asset('img/l.png') }}" alt="logo LinkedIn"></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/painel/home">Fazer login</a>
+                        <a class="nav-link" href="{{route('painel.home')}}">Fazer login</a>
                     </li>
                 </ul>
             </div>
