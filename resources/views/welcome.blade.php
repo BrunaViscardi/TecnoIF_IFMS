@@ -123,7 +123,7 @@
                         Atualmente, atua com a pré-incubação de ideias de negócios de estudantes do IFMS, por meio
                         do pagamento de bolsas mensais durante o período de seis meses. A intenção é que,
                         futuramente, a TecnoIF trabalhe também com incubação de empresas, atendendo inclusive o
-                        público externo
+                        público externo.
 
                     </p>
                 </div>
@@ -154,7 +154,7 @@
                         <li>aproximar o meio acadêmico do mercado de trabalho;
 
                         </li>
-                        <li>promover o desenvolvimento pessoal e profissional dos estudantes do IFMS durante a pré-incubação.
+                        <li>promover o desenvolvimento pessoal e profissional dos estudantes do IFMS durante a pré-incubação;
 
                         </li>
                         <li>organizar e realizar eventos como seminários, palestras, hackathons e minicursos, com o objetivo de disseminar a cultura do empreendedorismo e inovação.
