@@ -20,7 +20,7 @@
             <div class="collapse navbar-collapse" id="navbarSite">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="https://www.instagram.com/ifmscg/?igshid=1mn46ve39rvhy"> <img
+                        <a class="nav-link" target="_blank" href="https://www.instagram.com/tecnoif_incubadora_ifms"> <img
                                 id="redeSocial" src="{{ asset('img/i.png') }}"  alt="logo Instagram"></a>
                     </li>
                     <li class="nav-item">
@@ -34,6 +34,9 @@
                     <li class="nav-item">
                         <a class="nav-link" target="_blank" href="https://www.linkedin.com/in/tecnoif-incubadora-de-empresas-ifms-474aba1ba/"> <img
                                 id="redeSocial" src="{{ asset('img/l.png') }}" alt="logo LinkedIn"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" target="_blank" href="https://open.spotify.com/show/5PaRJI05NgL63uQH80sctN"> <img id="redeSocial" src="{{ asset('img/podcast.png') }}" alt="logo Podcast"></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('painel.home')}}">Fazer login</a>
